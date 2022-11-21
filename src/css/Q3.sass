@@ -1,0 +1,262 @@
+@mixin Q3()
+    #Q3-1, #Q3-2, #Q3-3, #Q3-4
+        @media screen and (min-width:$PadWidth)
+            padding-top: 60px
+        overflow-x: hidden
+        .row
+            position: relative
+        div.chatBox
+            background-size: 100%
+            width: 100%
+            max-width: 360px
+            height: 220px
+            @include flexBox(center, center)
+            div.text
+                font-size: 20px
+                font-weight: 700
+                line-height: 29px
+                text-align: center
+                letter-spacing: 0em
+                
+            &.q1-1a
+                background: url('../img/chat_q3-1a.svg') no-repeat center center
+                &::after
+                    content: ''
+                    position: absolute
+                    width: 60px
+                    height: 62px
+                    background: url('../img/bubble_q3.svg') no-repeat center center
+                    top:4px
+                    right: -20px
+                div.text
+                    width: 270px
+                    margin-bottom: 16px
+            &.q1-1b
+                background: url('../img/chat_q1-1b.svg') no-repeat center center
+               
+                height: 200px
+                margin-top: -20px
+                div.text
+                    margin-top: 25px
+                    margin-left: 15px
+                    flex-direction: column
+                    @include flexBox(center, center)
+                    text-align: center
+                    width: 280px
+                    span
+                        font-size: 18px
+                        font-weight: 500
+
+                    span.notice
+                        font-size: 18px
+                        font-weight: 700
+                        color:#FF4756
+            &.q1-1c
+                width: 100%
+                max-width: 360px
+                height: 120px
+                background: url('../img/chat_q1-1c.svg') no-repeat center center
+                div.text
+                    font-size: 18px
+                    font-weight: 500
+                    line-height: 26px
+
+                    color:#FFE7A6
+                    width: 170px
+                    margin-bottom: 30px
+        
+        .character
+            margin-top: -30px
+            z-index: -1
+            position: relative
+            @media screen and (min-width:$PadWidth)
+                transform: translateX(-50px)
+            img
+                max-width: 140px
+                width: 100%
+        .intro1
+            transform: translate(-25px, 18px)
+            background: url('../img/Q3-1_intro.png') no-repeat center center
+            background-size: cover
+            width: 360px
+            height: 200px
+            @media screen and (min-width:$PadWidth)
+                transform: translate(-25px, 18px)
+                background: url('../img/Q3-1_intro_L.png') no-repeat center left
+                background-size: contain
+                width: 100%
+                height: 400px
+                //left: 0
+
+        .intro2
+            //margin-left: 25px
+            background: url('../img/Q3-2_intro.png') no-repeat left center 
+            background-size: cover
+            width: 370px
+            height: 250px
+            @media screen and (min-width:$PadWidth)
+                transform: translate(30px, 18px)
+                background: url('../img/Q3-2_intro_L.png') no-repeat center center 
+                background-size: cover
+                width: 100%
+                height: 400px
+                //right: 0
+            @media screen and (max-height: 650px)
+                transform: translateY(-20px)
+        .txtHigh
+            position: absolute
+            left:0
+            bottom: -52px
+            @media screen and (min-width:$PadWidth)
+                left: calc( 50%  - 260px )
+                bottom: -12px
+            font-size: 15px
+            width: 320px
+            color:#FFE7A6
+            @media screen and (max-height: 650px)
+                transform: translateY(-16px)
+
+        .introBox
+            margin-top: 16px
+            @media screen and (max-height: 650px)
+                margin-top: 0px
+            height: 180px
+            @media screen and (min-width:$PadWidth)
+                height: 350px
+
+        .isSample
+            text-align: center
+            position: absolute
+            width: 100%
+            height: 30px
+            margin: 0
+            top: -24px
+            color:#fff
+            font-size: 24px
+            font-weight: 700
+            @media screen and (max-height: 650px)
+                transform: translate(60px, -16px)
+
+        .step
+            color:#fff
+            font-size: 20px
+            font-weight: 700
+            position: absolute
+            bottom: 0
+            .high
+                color:#FF4756
+            &.step1        
+                right: 0
+                @media screen and (min-width:$PadWidth)
+                    right: 100px
+                //margin: -80px -150px 0 0
+            &.step2
+                bottom: -6px
+                left: 0
+                @media screen and (min-width:$PadWidth)
+                    bottom: 40px
+                    left: 100px
+                @media screen and (max-height: 650px)
+                    transform: translateY(-16px)
+                    
+
+        .Q3before            
+            width: calc(100% + 50px)
+            @media screen and (min-width:$PadWidth)
+                width: 100%
+                max-width: 600px
+                margin: 0 auto
+
+        .timerBox
+            @include flexBox(start, center)
+            flex-direction: column
+            height:160px
+            margin-top:10px
+            .bubble_q3
+                position: absolute
+                right:-20px
+            .notice1
+                margin-top:50px 
+                color:#FFE7A6
+                font-size: 18px
+                font-weight: 700
+            
+            .notice2                
+                color:#FF4756
+                font-size: 18px
+                font-weight: 700
+            .notice3                
+                color:#FFE7A6
+                font-size: 18px
+                font-weight: 700
+                text-align: center
+        
+        /*
+            .btnBox
+                flex-direction: column
+                @include flexBox(center, center)
+        
+        /*
+            .Q3timer
+                width: 95px
+                height: 70px
+                background-repeat: no-repeat
+                background-position: center center
+                background-image: url('../img/timer.svg')
+                @include flexBox(center, center)
+                .value
+                    font-family: Inter
+                    font-size: 34px
+                    font-weight: 900
+                    color:#fff
+                    position: relative
+                    margin-top: 16px 
+                    &::after
+                        font-size: 8px
+                        transform: scale(0.6)
+                        content:'秒'
+                        position: absolute
+                        right:-10px 
+                        bottom: 3px
+   
+        div.board
+            width: calc(100% + 50px)
+            margin-left: -25px
+            position: relative
+            @media screen and (min-width:$PadWidth)
+                width: 100%
+                max-width: 600px
+                margin: 0 auto
+            img
+                width: 100%
+            div.cBtn
+                //border: 1px solid #999
+                position: absolute
+                &.on
+                    background-color: rgba(255, 0, 0, .6)
+                    border-radius: 50%
+        .message
+            color:#fff
+            text-align: center
+
+        .BPBtn.pageBtn.secondary
+            margin: 30px 0
+        
+        .dotBox
+            @include flexBox(center, center)
+            flex-direction: row-reverse
+            height: 15px
+            margin-bottom: 5px
+            .dot
+                width: 10px
+                height: 10px
+                margin: 0 5px
+                
+                border-radius: 50%
+                background-color: #FED63E
+                border:1px solid #FED63E
+                &.off
+                    background: none
+
+                
+            

@@ -1,0 +1,49 @@
+div#basic.page.bg1(style="display:none")
+    div.headerBox
+        button.BPBtn.pageBtn.left(data-id="personal") 
+            img(src="./img/back.svg")
+        span.title 個人基本資料
+        
+    div#serialNum.row.hori.dotLine.expansionBox
+        div.label 使用序號
+        div.box
+            input.full(placeholder="序號請洽國泰業務員")
+            span.commit *如為國泰員工，請輸入員工編號
+    
+    div.row.expansionBox
+        div.title 性別
+        div.btnBox  
+            button.button-group(data-group="sex", data-value="men") 男性
+            button.button-group(data-group="sex", data-value="main") 女性
+            button.button-group(data-group="sex", data-value="neutral") 中性
+    
+        div.title 年齡
+        div.btnBox 
+            button.button-group(data-group="age", data-value="~20") 20歲以下
+            button.button-group(data-group="age", data-value="21~30") 21~30歲
+            button.button-group(data-group="age", data-value="31~40") 31~40歲
+            button.button-group(data-group="age", data-value="41~50") 41~50歲
+            button.button-group(data-group="age", data-value="51~60") 51~60歲
+            button.button-group(data-group="age", data-value="61~70") 61~70歲
+            button.button-group(data-group="age", data-value="71~80") 71~80歲
+            button.button-group(data-group="age", data-value="81~90") 81~90歲
+            button.button-group(data-group="age", data-value="90~") 90歲以上    
+   
+        div.title 學歷
+        div.btnBox 
+            button.button-group(data-group="education", data-value="elementary") 國小或以下
+            button.button-group(data-group="education", data-value="secondary") 國中
+            button.button-group(data-group="education", data-value="high") 高中職/專科
+            button.button-group.small(data-group="education", data-value="bachelor") 大學/技術學院
+            button.button-group(data-group="education", data-value="master") 碩士
+            button.button-group(data-group="education", data-value="phd") 博士
+
+    div.row.center
+        //-
+            button.BPBtn.pageBtn.secondary(data-id="Q1-1")
+                span 送出
+        
+        button.BPBtn.pageBtn.secondary(data-id="list")
+            span 送出
+
+    footer.f1.corner

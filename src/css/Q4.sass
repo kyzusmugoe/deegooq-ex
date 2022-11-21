@@ -1,0 +1,169 @@
+@mixin Q4()
+    .row
+        position: relative
+    #Q4-1, #Q4-2
+        div.chatBox
+            background-size: 100%
+            width: 100%
+            max-width: 360px
+            height: 220px
+            @include flexBox(center, center)
+            div.text
+                font-size: 20px
+                font-weight: 700
+                line-height: 29px
+                text-align: center
+                letter-spacing: 0em
+                
+            &.q1-1a
+                background: url('../img/chat_q4-1a.svg') no-repeat center center
+                &::after
+                    content: ''
+                    position: absolute
+                    width: 60px
+                    height: 62px
+                    background: url('../img/bubble_q4.svg') no-repeat center center
+                    top:4px
+                    right: -20px
+                div.text
+                    width: 280px
+                    margin-bottom: 16px
+        .introBox
+            margin-top: 50px
+            @media screen and (max-width: 414px)
+                margin-top: -50px
+                
+            position: relative
+            z-index: -1
+        .intro1
+            width: 100%
+                
+            @include flexBox(center, center)
+            img
+                @media screen and (max-width: 414px)
+                    width: 80%
+
+                
+            &::before , &::after
+                position: absolute
+                width: 100%
+                height: 100%
+                background-color:#0e0a1a
+                content: '!'
+                top:0
+                z-index: -1
+            &::before
+                left: -100%
+                @media screen and (max-width: 414px)
+                    left: -80%
+            &::after
+                right: -100%
+                @media screen and (max-width: 414px)
+                    right: -80%
+        
+        .txtBox
+            ul
+                margin: 0 auto
+        .txt
+            color:#FFE7A6
+            font-style: normal
+            font-weight: 500
+            font-size: 16px
+                
+
+        .character
+            margin-top: -25px
+            @media screen and (min-width:$PadWidth)
+                transform: translateX(-50px)
+
+        .questColorBox
+            font-size: 2em
+            @media screen and (min-width:$PadWidth)
+                margin-top: 80px
+            height: 60px
+            .questColor                
+                @include flexBox(center, center)
+                width: 68px
+                height: 48px
+                background: url('../img/Q4card.svg') no-repeat 12px center
+                position: relative
+                text-align: center
+                &.on
+                    position: relative
+                    &::before
+                        content: ''
+                        width: 68px
+                        height: 50px
+                        background: url('../img/Q4stepper.svg') no-repeat center center
+                        color:#000
+                        font-size:24px
+                        position: absolute
+                        top:-45px
+                        left:0
+
+                &::after
+                    position: absolute
+        .darker
+            background-color: #2A1F48
+            text-align: center
+            padding-bottom:10px 
+            &::before , &::after
+                position: absolute
+                width: 100%
+                height: 100%
+                background-color:#2A1F48
+                content: '!'
+                top:0
+                z-index: -1
+            &::before
+                left: -100%
+            &::after
+                right: -100%
+
+            .notice
+                color:#FFE7A6
+                font-size: 16px
+                font-weight: 500
+ 
+        .colorBtnBox
+            display: grid
+            padding: 16px
+            grid-template-columns: 1fr 1fr 1fr 
+            grid-column-gap: 15px
+            grid-row-gap: 15px
+            @media screen and (max-width:390px)
+                grid-column-gap: 8px
+                grid-row-gap: 8px
+            max-width: 375px
+            margin: 0 auto
+            button
+                justify-self: center
+                width: 100px
+                height:50px
+                color:#EECB47
+                font-size: 24px
+                font-weight: 700
+                background-color: #2A1F48
+                border:3px solid #EECB47
+                border-radius: 30px
+                white-space: nowrap
+                @include flexBox(center, center)
+                @media screen and (max-width:390px)
+                    width: 90px
+                &.on
+                    color:#2A1F48
+                    background-color: #EECB47
+                &:active
+                    color:#2A1F48
+                    background-color: #EECB47
+        .BPBtn.pageBtn.secondary
+            margin: 10px 0
+                
+
+
+            
+
+            
+
+                
+            

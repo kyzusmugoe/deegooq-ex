@@ -1,0 +1,121 @@
+@mixin Q5()
+    #Q5-1, #Q5-2
+        overflow-x: hidden
+        div.chatBox
+            background-size: 100%
+            width: 100%
+            max-width: 360px
+            height: 220px
+            @include flexBox(center, center)
+            div.text
+                font-size: 20px
+                font-weight: 700
+                line-height: 29px
+                text-align: center
+                letter-spacing: 0em
+                
+            &.q5-1a
+                background: url('../img/chat_q3-1a.svg') no-repeat center center
+                &::after
+                    content: ''
+                    position: absolute
+                    width: 60px
+                    height: 62px
+                    background: url('../img/bubble_q5.svg') no-repeat center center
+                    top:4px
+                    right: -20px
+                div.text
+                    width: 280px
+                    margin-bottom: 16px
+            &.q1-1b
+                background: url('../img/chat_q1-1b.svg') no-repeat center center
+               
+                height: 200px
+                margin-top: -20px
+                div.text
+                    margin-top: 25px
+                    margin-left: 15px
+                    flex-direction: column
+                    @include flexBox(center, center)
+                    text-align: center
+                    width: 280px
+                    span
+                        font-size: 18px
+                        font-weight: 500
+
+                    span.notice
+                        font-size: 18px
+                        font-weight: 700
+                        color:#FF4756
+            
+            &.q5-1c
+                width: 100%
+                max-width: 360px
+                height: 120px
+                background: url('../img/chat_q1-1c.svg') no-repeat center center
+                div.text
+                    font-size: 18px
+                    font-weight: 500
+                    line-height: 26px
+                    color:#FFE7A6
+                    width: 210px
+                    margin-bottom: 30px
+
+        
+        .character
+            margin-top: -30px
+            z-index: -1
+            position: relative
+            img
+                max-width: 140px
+                width: 100%
+        .txtBox
+            flex-direction: column
+            font-weight: 500
+            font-size: 16px
+            .txt1
+                color: #fff
+            ul
+                color: #FFE7A6
+
+
+
+        .Qtimer
+            margin-top: 10px
+
+        #drawCanvas
+            background-color: #fff
+            margin-bottom: 10px 
+            -webkit-user-select: none
+            -moz-user-select: none
+            user-select: none
+
+        .drawBox
+            margin: 0 auto
+        
+        .toolBox
+            max-width:380px 
+            margin:  0 auto
+            @include flexBox(space-between, center)
+            button
+                justify-self: center
+                @include flexBox(center, center)
+                width: 110px
+                height:50px
+                color:#fff
+                font-size: 20px
+                font-weight: 700
+                background-color: #2A1F48
+                border:3px solid #fff
+                border-radius: 30px
+                text-align: center                
+                ywhite-space: nowrap
+                &:active                    
+                    color:#2A1F48
+                    background-color: #EECB47
+
+            
+            
+
+                
+            

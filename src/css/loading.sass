@@ -1,0 +1,47 @@
+@mixin loading()
+     &.loading
+        @include flexBox(center, center)
+        position: fixed
+        top:0
+        left: 0
+        background:#38246c url('../img/bg_l.jpg') no-repeat 
+        background-size: 1300px
+        background-position: 0 -90px
+        z-index: 100
+        width: 100%
+        height: 100%
+        
+        .box
+            @include flexBox(center, center)
+            flex-direction: column
+            
+            @keyframes rotateCircle
+                0% 
+                    transform: rotate(0deg)
+                100% 
+                    transform: rotate(360deg)
+            .circle
+                margin: 30px
+                color:#fff
+                width: 30px
+                height: 30px
+                animation-name: rotateCircle
+                animation-duration: 2s
+                animation-iteration-count: infinite
+                animation-timing-function: linear
+
+        &.off
+            @keyframes fadeOut
+                0% 
+                    top: 0
+                100% 
+                    top: -100%
+                    display: none
+            animation-name: fadeOut
+            animation-duration: .4s
+            animation-iteration-count: 1
+            animation-timing-function: ease
+            animation-fill-mode: forwards
+        
+        
+        

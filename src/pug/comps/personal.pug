@@ -1,0 +1,38 @@
+div#personal.page.bg1(style="display:none")
+    div.headerBox
+        button.BPBtn.pageBtn.left(data-id="start") 
+            img(src="./img/back.svg")
+        span.title 個資同意書
+        
+    div.row.expansionBox
+        div.PIConsent
+            p 您好：
+            p 謝謝您有意願參與此行動式認知評估平台檢測，我們遵守個人資料保護法及其相關法規命令、理解與重視受試者之隱私以及提供資訊的保密與安全問題。為了讓您能安心使用平台的行動認知功能檢測，以下為個人資料蒐集、處理及利用之告知暨同意書，係為告知您此檢測平台之資料如何蒐集、處理及利用受試者有關之個人資料，該個人資料之蒐集、處理及利用應符合中華民國個人資料保護法之規定，請您詳細閱讀。
+            p 本同意書提供您本檢測平台之相關資訊，您不須立即決定是否參加本檢測，請您經過慎重考慮後方予勾選同意。您須簽署同意書後才能參與本檢測。
+            p.title 其他聲明
+            p.paragraph 此行動式認知評估平台檢測結果不能取代專業醫學評估，若您有任何關於診斷與治療相關的問題，請您諮詢醫療相關專業人士。
+            p.title 檢測相關說明：
+            p.paragraph  認知功能檢測內容包含知覺動作(Perceptual and Motor)、專注力(Attention and Concertation)、執行功能(Executive Function)、語言(Language)及記憶力(Memory)五項能力，每種能力檢測包含三至四種題型，每種題型數量為1至3題。
+            p 檢測對象條件
+            p.paragraph  具有智慧型手機操作能力者。
+            p.title 檢測對象排除條件：
+                ul
+                    li (1) 無法經由言語或是紙筆溝通者。
+                    li (2) 無法完成所有評估內容者。
+                    li (3) 視聽覺障礙無法進行評估者。
+                    li (4) CDR 3.0分以上重度失智症者。
+            p.title 個人隱私保護及規劃
+            p 此檢測將透過網路平台接受基本資料內容收集和非侵入性之神經心理測驗。檢測進行過程中， 
+                span.notice 若您不願回答相關基本資料可點選跳過 
+                | ，此檢測平台將不會收集您的資料，後台接收到的數據不會連結至可辨識個人之資料(如姓名、身分證字號或聯絡方式等)。檢測資料將以去識別化方式提供給國泰人壽保險股份有限公司。
+    div.row.expansionBox.agreeBox
+        p 受試者勾選區
+        p 若您已詳細閱讀此份「同意書」內容並同意此資料處理方式，請勾選同意欄
+        div.goCheck
+            input#isAgree(type='checkbox') 
+            span 我已閱讀並接受上述同意書內容      
+    div.row.fill
+    div.row.center
+        button#sendArgee.BPBtn.pageBtn.secondary.off(data-id="basic")
+            span 送出同意書
+    footer.f1.corner

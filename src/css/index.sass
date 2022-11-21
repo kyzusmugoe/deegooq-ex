@@ -1,0 +1,392 @@
+
+$headerHeight: 80px
+$pagePadding: 20px
+$mainColor:#235288
+
+$AppMaxWidth:820px
+$AppMaxHeight:896px
+
+$PadWidth:650px
+
+//@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap')
+@import './loading.sass'
+@import './start.sass'
+@import './personal.sass'
+@import './basic.sass'
+@import './Q1.sass'
+@import './Q2.sass'
+@import './Q3.sass'
+@import './Q4.sass'
+@import './Q5.sass'
+@import './end.sass'
+
+@mixin flexBox($row, $col)
+    display: flex
+    justify-content: $row
+    align-items: $col
+
+
+
+body,html
+    margin: 0px
+    padding: 0px
+    height: 100%
+    font-family: 'Noto Sans TC', sans-serif
+body
+    background-color: #ccc
+    .app      
+
+        height: 100%        
+        margin: 0 auto
+        @include flexBox(start, center)
+        flex-direction: column
+
+        button
+            color:#000
+
+        @include loading()
+            
+        &.landscape
+            overflow: hidden
+            @include flexBox(center, center)
+            width: 100%
+            height: 100%
+            background:#38246c url('../img/bg_l.jpg') no-repeat 
+            background-size: 1300px
+            background-position: 0 -90px
+            .logo
+                position: absolute
+                top:30px
+                left:30px
+            .box
+                @include flexBox(center, flex-end)
+                .character
+                    position: relative
+                    z-index: 0
+                    .chat
+                        @include flexBox(center, center)                       
+                        margin-left: 100px
+                        background: url('../img/chat_1.svg') no-repeat center center
+                        background-size: 100%
+                        width: 250px
+                        height: 160px
+                        .text 
+                            margin-left: 20px
+                            width: 180px
+                            font-style: normal
+                            font-weight: 700
+                            font-size: 20px
+                    &::before
+                        content: ''
+                        width: 250px
+                        height: 250px
+                        position: absolute
+                        bottom: -200px
+                        left: -40px
+                        background: url('../img/plant_1.png') no-repeat center center
+                        z-index: -1
+
+
+
+        //元件
+        #runnerBoxTool
+            @include flexBox(start, center)
+            #addRunner
+                background: none
+                border: none
+                font-size: 2em
+                color:$mainColor
+
+        .complete
+            font-size: 4em
+            font-weight: bolder
+            color:#f30
+            margin: 16px auto
+            
+        button.BPBtn
+            background: none
+            border: none
+            @keyframes jitter
+                0% 
+                    transform: scale(1)
+                50% 
+                    transform: scale(1.05)
+                100% 
+                    transform: scale(1)
+            &.main
+                position: relative
+                width: 100%
+                max-width: 360px
+                min-height: 140px
+                border: none
+                font-size: 1em
+                background: url('../img/btn_main.svg') no-repeat center center
+                background-size: 100%
+
+                font-size: 24px
+                font-weight: 700
+                letter-spacing: 0.1em
+                text-align: center
+
+                animation-name: jitter
+                animation-duration: 2s
+                animation-iteration-count: infinite
+
+                @keyframes handMove 
+                    0% 
+                        transform: translateY(0)
+                    50% 
+                        transform: translateY(-20px)
+                    100% 
+                        transform: translateY(0)
+                
+                img.hand
+                    position: absolute
+                    right: 20px
+                    bottom: -30px
+                    animation-name: handMove
+                    animation-duration: 1s
+                    animation-iteration-count: infinite
+            &.secondary
+                position: relative
+                width: 100%
+                max-width: 300px
+                min-height: 100px
+                border: none
+                font-size: 1em
+                background: url('../img/btn_secondary.svg') no-repeat center center
+                background-size: 100%
+
+                font-size: 24px
+                font-weight: 700
+                letter-spacing: 0.1em
+                text-align: center
+
+                animation-name: jitter
+                animation-duration: 2s
+                animation-iteration-count: infinite
+        
+        button.fBtn
+            border: none
+            background: none
+            background-image: url(../img/btn_skip.svg)
+            background-repeat: no-repeat
+            background-size: 100%
+            width: 100%
+            position: fixed
+            left: 0
+            bottom: 0
+            height: 90px
+            font-size: 24px
+            font-weight: 700
+            line-height: 35px
+            letter-spacing: 0.1em
+            text-align: center
+            &.arrow::after
+                content: ''
+                position: absolute
+                width: 30px
+                height: 30px
+                background-image: url('../img/akar-icons_arrow-left.svg')
+                left: calc( 50% + 30px )
+
+        .playBtn
+            border: none
+            background: none
+            width: 64px
+            height: 64px
+            background-image: url("../img/play_btn.svg")
+            background-repeat: no-repeat
+            transition: .2s
+            &:active
+                transform: scale(1.2)
+            
+        .rideType.on
+            box-shadow: 0 0 2px 4px #fff
+            background-color: #6da381
+            z-index: 10
+            //border: 6px solid #fc0 
+
+        #runnerBox, #myRunnerList
+            @include flexBox(start, center)
+            flex-wrap: wrap
+
+        .memberLabel
+            background-color: #fff
+            border-radius: 16px
+            padding:4px 12px
+            margin: 4px
+            font-size: 1.2em
+
+        .headerBox
+            text-align: center
+            margin: 20px 0
+            position: relative
+            padding-bottom: 18px
+            border-bottom: 1px solid #fff
+            @include flexBox(center, center)
+            .title
+                color:#FEFFD7
+                font-size: 30px
+                font-weight: 700
+                line-height: 43px
+                letter-spacing: 0.1em
+                text-align: center
+            button.left
+                position: absolute
+                left: 0
+                
+
+        &.full
+            header
+                display: none
+        
+        .page
+            $_HP: $headerHeight + $pagePadding
+            padding: 0 25px
+            width: calc(100% - 50px)
+            max-width: $AppMaxWidth
+            height: 100%
+            overflow-x: hidden
+            overflow-y: auto
+            z-index: 1
+            display: flex
+            flex-direction: column
+
+
+            &.bg1
+                background:#38246c url('../img/bg_l.jpg') no-repeat 
+                background-size: 1300px
+                background-position: center -90px
+            &.bg2
+                background:#39326c url('../img/bg2_l.svg') no-repeat 
+                background-size: 1000px
+                background-position: 0 -300px
+            &.bg3
+                background:#38246c url('../img/bg3_l.svg') no-repeat 
+                background-size: 240%
+                background-position: 0 -40%
+            footer
+                z-index: -1                                
+            footer.f1::before                                
+                content: " "
+                position: absolute
+                left: 0
+                bottom: 0
+                width: 100%
+                height:50px
+                background-image: url('../img/footer_1.svg')
+                background-repeat: no-repeat
+                background-position: center bottom
+                background-size: 100%
+            footer.f1.corner::after 
+                content: " "
+                position: absolute
+                left: 0
+                bottom: 0
+                width: 60px
+                height:60px
+                background-image: url('../img/footer_corner.svg')
+                background-repeat: no-repeat
+                background-position: left center
+                background-size: 100% 
+
+            .row
+                width: 100%
+                max-width: 390px
+                margin: 0 auto
+                @media screen and (min-width:$PadWidth)
+                    margin-bottom: 15px
+                &.expansionBox
+                    @media screen and (min-width:560px)
+                        max-width: 600px
+                &.fullBox
+                    @media screen and (min-width:560px)
+                        max-width: calc( 100% + 50px )
+                        //margin-left:-25px
+                &.full
+                    width: calc( 100% + 50px )
+                    margin-left:-25px
+                    img
+                        width: 100%
+                
+                &.fill
+                    flex: 0.8 0
+                
+                //margin-bottom: 16px 
+                &.hori
+                    @include flexBox(center, center)
+                    flex-direction: row
+                
+                &.center   
+                    @include flexBox(center, center)
+                 
+                .label
+                    color:$mainColor
+                    font-size:1.2em
+                    font-weight: bolder
+                    margin-bottom: 8px 
+                    
+                input, select
+                    font-size:1.2em
+
+                input, select
+                    padding: 8px
+                    border: none
+                    border-radius: 25px
+                    &.full
+                        width: calc(100% - 16px)
+                        text-align: center
+                        &::placeholder 
+                            text-align: center
+                        &::-webkit-input-placeholder 
+                            text-align: center
+                        &::-ms-input-placeholder   
+                            text-align: center
+
+            .Qprogress
+                width: 100%
+                height: 10px
+                border-radius: 8px
+                background-color: #bababa
+                margin: 10px
+                overflow: hidden
+                .bar
+                    width: 0
+                    height: 10px
+                    background-color: #EECB47
+           
+            .Qtimer
+                width: 95px
+                height: 70px
+                background-repeat: no-repeat
+                background-position: center center
+                background-image: url('../img/timer.svg')
+                @include flexBox(center, center)
+                .value
+                    font-family: Inter
+                    font-size: 34px
+                    font-weight: 900
+                    color:#fff
+                    position: relative
+                    margin-top: 16px 
+                    &::after
+                        font-size: 8px
+                        transform: scale(0.6)
+                        content:'秒'
+                        position: absolute
+                        right:-10px 
+                        bottom: 3px
+            //riderMap
+
+        
+        @include start()
+        @include personal()
+        @include basic()
+        @include Q1()
+        @include Q2()
+        @include Q3()
+        @include Q4() 
+        @include Q5() 
+        @include end() 

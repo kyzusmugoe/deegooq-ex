@@ -1,0 +1,78 @@
+//基本資料
+@mixin fontStyle()
+    color:#fff
+    font-size: 15px
+    font-weight: 700
+    line-height: 26px
+    letter-spacing: 0em
+
+@mixin commitStyle()
+    color:#FFE7A6
+    font-size: 14px
+    font-weight: 700
+    line-height: 20px
+    letter-spacing: 0em
+    text-align: left
+
+@mixin basic()
+    
+    #basic            
+        .row
+            &#serialNum
+                > .label
+                    flex: 0 0 120px
+                    @include fontStyle()
+                padding-bottom: 20px
+                .commit
+                    margin-top: 8px
+                    white-space: nowrap
+                    @include commitStyle()
+                    @media screen and (min-width:$PadWidth)
+                        margin-left: 20px
+                .box
+                    @media screen and (min-width:$PadWidth)
+                        display: flex
+            .title
+                @include fontStyle()
+                text-align: left
+                margin-bottom: 8px
+            &.dotLine
+                border-bottom: 2px dashed #fff
+            &.basicDataBox
+
+
+        div.btnBox 
+            display: grid
+            
+            grid-template-columns: 1fr 1fr 1fr
+            @media screen and (min-width:$PadWidth)
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+
+            grid-column-gap: 15px
+            grid-row-gap: 15px
+            margin: 8px 0
+            .button-group
+                width: 100%
+                background-color: #fff
+                height: 40px
+                border-radius: 25px
+                border: 2px solid #EECB47
+
+                @include fontStyle()
+                color:#000
+                white-space: nowrap
+                &.small
+                    font-size: 13px
+                    font-weight: bold
+
+                &.on
+                    color:#1e1c1c
+                    border-color:#fff
+                    background-color: #EECB47
+        
+        .BPBtn.pageBtn.secondary
+            margin: 40px 0 80px 0
+
+
+                
+            

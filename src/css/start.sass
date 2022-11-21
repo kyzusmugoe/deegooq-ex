@@ -1,0 +1,43 @@
+@mixin start()
+    #start        
+        @media screen and (min-width:$PadWidth)
+            padding-top: 60px 
+        &::before
+            content: " "
+            position: absolute
+            width: 320px
+            height: 460px
+            left: calc(50% - 250px)
+            background: url('../img/plant_1.png') no-repeat center center
+            top: 260px
+            @media screen and (min-width:$PadWidth)
+                top: 440px 
+            background-size: 100%
+            z-index: -1
+        img.logo
+            padding-top: 40px
+        div.chatBox
+            background: url('../img/chat_1.svg') no-repeat center center
+            background-size: 100%
+            max-width: 360px
+            height: 180px
+            @media screen and (min-width:$PadWidth)
+                height: 280px 
+            @include flexBox(center, center)
+            div.text
+                width: 240px
+                font-size: 20px
+                font-weight: 700
+                line-height: 29px
+        .character
+            margin-top: -20px
+            img
+                max-width: 190px
+                width: 100%
+
+        .BPBtn.pageBtn.main
+            @media screen and (min-width:$PadWidth)
+                margin-top: 60px 
+
+            
+

@@ -1,0 +1,19 @@
+div#Q3-4.page.bg3(style="display:none")
+    div.row.center.timerBox
+        img.bubble_q3(src="./img/bubble_q3.svg")
+        div#Q3AfterTimer.Qtimer.t1
+            span.value 40
+        span.notice2 注意！只有五次點擊機會！
+        span.notice3 現在請點擊「圖片」上，與上一張照片不同之處(至少找出5個)
+    div.row.dotBox
+        - var n = 0;
+            while n < 5
+                - n++
+                div.dot
+    div.row.Q3beforeBox.expansionBox.fullBox
+        div.board
+            img(src="./img/Q3after.jpg")
+    div.row.center
+        div.message
+   
+    button#Q3skip.fBtn.skip.arrow.pageBtn(data-id="Q4-1") 跳過

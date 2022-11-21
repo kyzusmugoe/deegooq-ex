@@ -1,0 +1,175 @@
+@mixin Q2()
+    #Q2-1, #Q2-2
+        @media screen and (min-width:$PadWidth)
+            padding-top: 60px
+        .row
+            position: relative
+        div.chatBox
+            background-size: 100%
+            width: 100%
+            max-width: 360px
+            height: 220px
+            @include flexBox(center, center)
+            div.text
+                font-size: 20px
+                font-weight: 700
+                line-height: 29px
+                text-align: center
+                letter-spacing: 0em
+                
+            &.q1-1a
+                background: url('../img/chat_q2-1a.svg') no-repeat center center
+                &::after
+                    content: ''
+                    position: absolute
+                    width: 60px
+                    height: 62px
+                    background: url('../img/bubble_q2.svg') no-repeat center center
+                    top:4px
+                    right: -10px
+                div.text
+                    width: 260px
+                    margin-bottom: 16px
+            &.q1-1b
+                background: url('../img/chat_q2-1b.svg') no-repeat center center
+               
+                height: 200px
+                margin-top: -20px
+                div.text
+                    margin-top: 25px
+                    margin-left: 15px
+                    flex-direction: column
+                    @include flexBox(center, center)
+                    text-align: center
+                    width: 280px
+                    span
+                        font-size: 18px
+                        font-weight: 500
+
+                    span.notice
+                        font-size: 18px
+                        font-weight: 700
+                        color:#FF4756
+            &.q1-1c
+                width: 100%
+                max-width: 360px
+                height: 120px
+                background: url('../img/chat_q1-1c.svg') no-repeat center center
+                div.text
+                    font-size: 18px
+                    font-weight: 500
+                    line-height: 26px
+
+                    color:#FFE7A6
+                    width: 170px
+                    margin-bottom: 30px
+        
+        @keyframes Q1isListenedFadeIn
+            0% 
+                opacity: 0
+                transform: translateY(-20px)
+            100% 
+                opacity: 1
+                transform: translateY(0)
+        .character
+            margin-top: -30px
+            z-index: -1
+            position: relative
+            img
+                max-width: 140px
+                width: 100%
+            @media screen and (min-width:$PadWidth)
+                transform: translateX(-50px)
+        #Q1PlayMp3
+            border: none
+            background: none
+            width: 64px
+            height: 64px
+            background-image: url("../img/play_btn.svg")
+            background-repeat: no-repeat
+            transition: .2s
+            &:active
+                transform: scale(1.2)
+        /*
+            #Q1progress
+        #Q1progress
+            width: 100%
+            height: 10px
+            border-radius: 8px
+            background-color: #bababa
+            margin: 10px
+            overflow: hidden
+            .bar
+                width: 0
+                height: 10px
+                background-color: #EECB47
+
+
+        #Q1isListened
+            animation-name: Q1isListenedFadeIn
+            animation-duration: .4s
+
+            flex-direction: column
+            @include flexBox(center, center)
+
+        button.BPBtn.secondary
+            margin-top: -30px
+
+        .numBtnBox
+            display: grid
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+            /*
+                grid-column-gap: 21px
+                grid-row-gap: 21px
+            grid-column-gap: 12px
+            grid-row-gap: 12px
+            @media screen and (min-width:$PadWidth)
+                margin-top:50px
+            button.Q2-2_numbers
+                border: none
+                background: none
+                width: 55px
+                height: 55px
+                font-size: 24px
+                font-weight: 900
+                line-height: 35px                
+                @include flexBox(center, center)
+
+                &:nth-child(odd)
+                    background-image: url('../img/Q2_btn_1.svg')
+                &:nth-child(even)
+                    background-image: url('../img/Q2_btn_2.svg')
+                    
+                background-repeat: no-repeat
+                background-position: center center
+        .mySelection
+            @media screen and (min-width:$PadWidth)
+                margin-top:100px
+            margin-top: 30px
+            display: grid
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+            grid-column-gap: 10px
+            .Q2-2_answer
+                font-size: 30px
+                font-weight: 700
+                color: #6d6d6d
+                width: 56px
+                height: 56px
+                border:1px solid #6d6d6d
+                @include flexBox(center, center) 
+                &.on
+                    color:#fff
+                    background-color: #CD8188
+                    border-color: #fff
+                &.current
+                    position: relative
+                    &::after
+                        position: absolute
+                        content: ''
+                        width: 100%
+                        height: 8px
+                        background-color: #fff
+                        border-radius: 3px
+                        bottom: -15px
+
+        

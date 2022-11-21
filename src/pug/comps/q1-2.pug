@@ -1,0 +1,16 @@
+div#Q1-2.page.bg2(style="display:none")
+    div.row
+        div.chatBox.q1-1a
+            div.text 請問剛才提到五個要購買的東西是什麼？
+        div.character
+            img(src="./img/deegooq_1.svg")
+        div.chatBox.q1-1b
+            div.text 您有40秒的時間作答，按下「我準備好了」按鈕後開始計時！
+                //-
+                    progress#Q1progress(min=0, max=100, value=0) 
+        
+    div.row.fill
+    div.row.center
+        button#startQ1Timer.BPBtn.pageBtn.secondary(data-id="Q1-3")
+            span 我準備好了
+    footer.f1.corner
