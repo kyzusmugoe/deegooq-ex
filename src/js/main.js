@@ -9,14 +9,14 @@ if(window.localStorage.getItem('deegooq_current_page')){
     console.log('deegooq_current_page', currentPage)
 }
 
-currentPage = 'start'
+//測試
+currentPage = 'basic'
 
 //使用者資料 從localStorage取得deegooq_current_page的頁面資料
 if(window.localStorage.getItem('deegooq_current_data') && currentPage != 'start'){
     collectData =JSON.parse( window.localStorage.getItem('deegooq_current_data'))
-    console.log('deegooq_current_page', collectData)
+    //console.log('deegooq_current_page', collectData)
 }
-
 
 //讀取圖片資源管理
 const loadImgManager = ()=>{
@@ -38,6 +38,7 @@ const loadImgManager = ()=>{
     }
     loadImgAssets(`./img/${assetsList[ct]}`)
 }
+
 
 
 
@@ -115,13 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(collectData)
     }
     //#endregion
-
-    //#region 資料上傳-尚未處理，須確定在哪個階段
-    const sendDataToServer = ()=>{}
-    
-    //#endregion
  
-    //#region 個人資料的button group
+    //#region 個 人資料的button group
     const setButtonGroup = ()=>{
         document.querySelectorAll(".button-group").forEach(btn=>{
             btn.addEventListener("click", event=>{
@@ -168,6 +164,21 @@ document.addEventListener('DOMContentLoaded', () => {
             event.target.checked?
             document.querySelector('#sendArgee').classList.remove('off'):
             document.querySelector('#sendArgee').classList.add('off')
+        })
+    }
+    //#endregion
+
+    //#region Q1購買清單
+    
+    const setList = data =>{
+        const box = document.querySelector('#listBox')
+        data.list.map(row=>{
+            const btn = document.createElement('button')
+            btn.innerHTML = row.title
+            btn.addEventListener('click', event=>{
+                openPage('#Q1-1')
+            })
+            box.appendChild(btn)
         })
     }
     //#endregion
@@ -544,20 +555,35 @@ document.addEventListener('DOMContentLoaded', () => {
     //#endregion
     
     //init
-    
-
-    loadImgManager()
     closeAll()
     document.querySelector(`#${currentPage}`).style.display = "flex"
+    loadImgManager()
     setBtnsHandler()
     setButtonGroup()
-    //pages
-    personal()
-    q1()
-    q2()
-    q3()
-    q4()
-    q5()
-
-    
+    //#region 讀取json設定檔
+    fetch("./js/data.json", {
+        method: 'GET'
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+    }).then(res => {
+        if (res) {
+            return res
+        } else {
+            alert("取得資料失敗")
+        }
+    }).then(res => {
+        console.log(res)
+        //pages
+        personal()
+        setList(res)
+        q1()
+        q2()
+        q3()
+        q4()
+        q5()
+    }).catch(error => {
+        console.error('json 取得失敗:', error)
+    });
 })
