@@ -1,6 +1,15 @@
 {
     "list":[
-        {"title":"題組一"},
+        {
+            "title":"題組一",
+            "q1":{
+                "sound":"./mp3/MCI_screen_E3_Q1.m4a",
+                "answer":[]
+            },
+            "q2":{
+                
+            }
+        },
         {"title":"題組二"},
         {"title":"題組三"}
     ]

@@ -12,6 +12,9 @@ if(window.localStorage.getItem('deegooq_current_page')){
 //測試
 currentPage = 'basic'
 
+//
+let mainData = {}
+
 //使用者資料 從localStorage取得deegooq_current_page的頁面資料
 if(window.localStorage.getItem('deegooq_current_data') && currentPage != 'start'){
     collectData =JSON.parse( window.localStorage.getItem('deegooq_current_data'))
@@ -154,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
         
         return timer
+
     }
     //#endregion
 
@@ -192,7 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
             sw = false
             let mp3 = new Audio()
             //mp3.src="./mp3/Q1.mp3"
-            mp3.src="./mp3/MCI_screen_E3_Q1.m4a"
+            //mp3.src="./mp3/MCI_screen_E3_Q1.m4a"
+            mp3.src= mainData.q1.sound
             mp3.play()
             /*mp3.addEventListener("canplaythrough",()=>{
                 mp3.play()
@@ -473,19 +478,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //#endregion
 
-    //#region q5 畫時鐘
+    //#region q5 畫時鐘 EX版棄用
+    /*
     const q5 = ()=>{        
         const canvas = document.querySelector("#drawCanvas");
         const pen =  document.querySelector("#pen")
         const eraser =  document.querySelector("#eraser")
         const signaturePad = new SignaturePad(canvas);
-        /*
-        const drawComplete = ()=>{
-            //document.querySelector("#testDraw").src= signaturePad.toDataURL("image/jpeg")
-            setDataCollector('Q5', signaturePad.toDataURL("image/jpeg"))
-        }
-        */
-
         const setPen = ()=>{
             signaturePad.penColor = '#000'
             signaturePad.maxWidth = 1
@@ -511,7 +510,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener("resize", resizeCanvas);
         resizeCanvas();
 
-
         let Q5Timer
         document.querySelector("#startQ5Timer").addEventListener('click',()=>{            
             Q5Timer = setTimer(60, "#Q5Timer .value",()=>{
@@ -519,7 +517,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(Q5Timer)
             })
         })
-
         
         pen.addEventListener('click',()=>{
             setPen()
@@ -552,8 +549,22 @@ document.addEventListener('DOMContentLoaded', () => {
             endOfQ5()
         })
     }
+    */
     //#endregion
     
+    //#region q5ex 
+    const q5ex = ()=>{
+        let Q5exTimer
+        document.querySelector("#startQ5Timer").addEventListener('click',()=>{            
+            Q5exTimer = setTimer(60, "#Q5Timer .value",()=>{
+                //openPage("#Q1-2")
+                clearInterval(Q5exTimer)
+            })
+        })
+
+    }
+    //#endregion  
+
     //init
     closeAll()
     document.querySelector(`#${currentPage}`).style.display = "flex"
@@ -575,6 +586,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }).then(res => {
         console.log(res)
+        mainData = res
         //pages
         personal()
         setList(res)
@@ -582,7 +594,8 @@ document.addEventListener('DOMContentLoaded', () => {
         q2()
         q3()
         q4()
-        q5()
+        //q5() ex版棄用
+        q5ex()
     }).catch(error => {
         console.error('json 取得失敗:', error)
     });
