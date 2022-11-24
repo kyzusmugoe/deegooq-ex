@@ -10,7 +10,7 @@ if(window.localStorage.getItem('deegooq_current_page')){
 }
 
 //測試
-currentPage = 'basic'
+currentPage = 'Q2-1'
 
 //
 let mainData = {}
@@ -172,14 +172,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //#endregion
 
-    //#region Q1購買清單
-    
+    //#region 題庫列表    
     const setList = data =>{
         const box = document.querySelector('#listBox')
-        data.list.map(row=>{
+        data.list.map(( row, index )=>{
             const btn = document.createElement('button')
             btn.innerHTML = row.title
+            btn.dataset.sn = index
             btn.addEventListener('click', event=>{
+                mainData = data.list[event.target.dataset.sn]
+                q1()
+                q2()
+                q3()
+                q4()
+                q5ex()
                 openPage('#Q1-1')
             })
             box.appendChild(btn)
@@ -195,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if(!sw) return
             sw = false
             let mp3 = new Audio()
-            //mp3.src="./mp3/Q1.mp3"
             //mp3.src="./mp3/MCI_screen_E3_Q1.m4a"
             mp3.src= mainData.q1.sound
             mp3.play()
@@ -225,6 +230,27 @@ document.addEventListener('DOMContentLoaded', () => {
             window.localStorage.setItem('deegooq_current_page', 'end')//設定當前頁面
         }
 
+        const btnBox = document.querySelector("#Q1-3 .btnBox")
+        mainData.q1.answer.map(btnTxt =>{
+            const btn = document.createElement('button')
+            btn.innerHTML = btnTxt
+            btn.classList.add('needBuy')
+            btn.dataset.buy = btnTxt
+            btn.addEventListener('click', event=>{
+                if(!btn.classList.contains('on')){
+                    btn.classList.add('on')
+                    needBuyList.push(event.target.dataset.buy)
+                    if(needBuyList.length == 5){
+                        endOfQ1()
+                    }
+                }else{
+                    console.log("選過了")
+                }
+            })
+
+            btnBox.appendChild(btn)
+        })
+        /*
         document.querySelectorAll('#Q1-3 .needBuy').forEach(btn=>{
             btn.addEventListener('click', event=>{
                 if(!btn.classList.contains('on')){
@@ -240,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
         })
-
+        */
         
         document.querySelector("#startQ1Timer").addEventListener('click',()=>{
             clearInterval(Q1Timer)
@@ -248,14 +274,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 endOfQ1()
             })
         })
+
     }
     //#endregion
 
     //#region Q2 執行力-聽語音點選數字
     const q2=()=>{
-
         let sw = true;
-        const a1 = [9,4,2,7,8]//正確答案
+        //const a1 = [9,4,2,7,8]//正確答案
+        const a1 = mainData.q2.answer//正確答案
         let a2 = []//回答的收集容器
         let last
         const _progress =  document.querySelector("#Q2progress .bar")
@@ -277,7 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
             sw = false
             let mp3 = new Audio()
             //mp3.src="./mp3/87249.mp3"
-            mp3.src="./mp3/Normal_screen_B1_b1.m4a"
+            //mp3.src="./mp3/Normal_screen_B1_b1.m4a"
+            mp3.src= mainData.q2.sound
             mp3.play()
             /*mp3.addEventListener("canplaythrough",()=>{
                 mp3.play()
@@ -585,17 +613,17 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("取得資料失敗")
         }
     }).then(res => {
-        console.log(res)
         mainData = res
         //pages
         personal()
         setList(res)
-        q1()
-        q2()
-        q3()
-        q4()
-        //q5() ex版棄用
-        q5ex()
+        //test
+            mainData = res.list[0]
+            q1()
+            q2()
+            q3()
+            q4()
+            q5ex()
     }).catch(error => {
         console.error('json 取得失敗:', error)
     });

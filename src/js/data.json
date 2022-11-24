@@ -4,13 +4,33 @@
             "title":"題組一",
             "q1":{
                 "sound":"./mp3/MCI_screen_E3_Q1.m4a",
+                "answer" : [ "牛奶", "西瓜", "醬油", "青菜", "玉米", "牛奶", "豆腐", "泡麵", "豬肉", "香腸", "南瓜", "紅豆", "冬粉", "豆漿", "茄子", "蒟蒻"]
+            },
+            "q2":{
+                "sound":"./mp3/Normal_screen_B1_b1.m4a",
+                "answer":[9,4,2,7,8]
+            }
+        },{
+            "title":"題組二",
+            "q1":{
+                "sound":"./mp3/Q1.mp3",
+                "answer":["test"]
+            },
+            "q2":{
+                "sound":"./mp3/Normal_screen_B1_b1.m4a",
+                "answer":[9,4,2,7,8]
+            }
+        },
+        {
+            "title":"題組三",
+            "q1":{
+                "sound":"",
                 "answer":[]
             },
             "q2":{
-                
+                "sound":"./mp3/Normal_screen_B1_b1.m4a",
+                "answer":[9,4,2,7,8]
             }
-        },
-        {"title":"題組二"},
-        {"title":"題組三"}
+        }
     ]
 }
