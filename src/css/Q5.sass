@@ -1,6 +1,72 @@
+@use "sass:math"
 @mixin Q5()
-    #Q5-1, #Q5-2
+    #Q5-1, #Q5-2,#Q5ex-1, #Q5ex-2
         overflow-x: hidden
+        .txt
+            color:#FFE7A6
+            text-align: center
+            margin-bottom: 5px
+
+        .q5-intro
+            width: 100%
+            margin: 0 auto
+            @media screen and (max-height:660px)
+                width: 67%
+        .infoBox
+            text-align: center
+            position: relative
+            .title
+                color: #fff
+                font-weight: bold
+            #Q5exTimer
+                position: absolute
+                top: -100px
+                right: 0px
+
+        #q5QuestBox
+            height: 150px
+            @include flexBox(center, center)
+            .left, .right
+                //border:1px solid #fff
+                display: grid
+                gap: 3px
+                padding: 5px
+                margin: 15px
+                &.grid-2x2
+                    grid-template-columns: 1fr 1fr
+                &.grid-3x3
+                    grid-template-columns: 1fr 1fr 1fr
+                &.grid-4x3
+                    grid-template-columns: 1fr 1fr 1fr 1fr
+
+                .q5Icon
+                    background-image: url('./img/g5-icons.svg')
+                    background-repeat: no-repeat
+                    background-size: 180px 180px
+                    width: 30px
+                    height: 30px
+
+                    $max: 35
+                    @for $i from 0 through $max 
+                        &.icon-#{$i+1} 
+                            background-position: #{math.floor($i%6) * -30}px #{math.floor($i/6) * -30}px
+        .ansBtn
+            justify-self: center
+            width: 100px
+            height:50px
+            color:#EECB47
+            font-size: 24px
+            font-weight: bold
+            background: none
+            border:3px solid #EECB47
+            border-radius: 30px
+            white-space: nowrap
+            margin: 10px
+            &.on
+                color:#000
+                background-color: #EECB47
+
+
         div.chatBox
             background-size: 100%
             width: 100%
@@ -14,8 +80,9 @@
                 text-align: center
                 letter-spacing: 0em
                 
-            &.q5-1a
+            &.q5-1a, &.q5ex-1a
                 background: url('../img/chat_q3-1a.svg') no-repeat center center
+                background-size: 100%
                 &::after
                     content: ''
                     position: absolute
@@ -47,7 +114,8 @@
                         font-size: 18px
                         font-weight: 700
                         color:#FF4756
-            
+                              
+                
             &.q5-1c
                 width: 100%
                 max-width: 360px

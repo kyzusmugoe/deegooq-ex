@@ -19,6 +19,8 @@ $PadWidth:650px
 @import './Q3.sass'
 @import './Q4.sass'
 @import './Q5.sass'
+@import './Q6.sass'
+@import './Q7.sass'
 @import './end.sass'
 
 @mixin flexBox($row, $col)
@@ -36,7 +38,6 @@ body,html
 body
     background-color: #ccc
     .app      
-
         height: 100%        
         margin: 0 auto
         @include flexBox(start, center)
@@ -88,7 +89,20 @@ body
                         z-index: -1
 
 
-
+        #list
+            .intro
+                color: #fff
+                margin-bottom: 15px  
+                
+            #listBox
+                button 
+                    font-size:24px
+                    font-weight: bold
+                    width: 100%
+                    background-color: #fff
+                    border: 1px solid #EECB47
+                    border-radius: 25px 
+                    margin-bottom: 20px  
         //元件
         #runnerBoxTool
             @include flexBox(start, center)
@@ -389,4 +403,6 @@ body
         @include Q3()
         @include Q4() 
         @include Q5() 
+        @include Q6() 
+        @include Q7() 
         @include end() 

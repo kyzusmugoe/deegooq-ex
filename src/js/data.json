@@ -1,7 +1,7 @@
 {
     "list":[
         {
-            "title":"題組一",
+            "title":"簡單",
             "q1":{
                 "sound":"./mp3/MCI_screen_E3_Q1.m4a",
                 "answer" : [ "牛奶", "西瓜", "醬油", "青菜", "玉米", "牛奶", "豆腐", "泡麵", "豬肉", "香腸", "南瓜", "紅豆", "冬粉", "豆漿", "茄子", "蒟蒻"]
@@ -9,9 +9,62 @@
             "q2":{
                 "sound":"./mp3/Normal_screen_B1_b1.m4a",
                 "answer":[9,4,2,7,8]
+            },
+            "q3":{
+                "before":"./img/Q3before.jpg",
+                "after":"./img/Q3after.jpg",
+                "pos":[
+                    {"left":52, "top":40, "radius":18, "txt":"枕頭少了一個"},
+                    {"left":50, "top":58, "radius":21, "txt":"少了貓咪"},
+                    {"left":30, "top":70, "radius":18, "txt":"拖鞋方向變了"},
+                    {"left":76, "top":72, "radius":21, "txt":"地毯變圓的"},
+                    {"left":2,  "top":74, "radius":18, "txt":"凳子少一張"},
+                    {"left":12, "top":14, "radius":18, "txt":"窗外雲朵變了"},
+                    {"left":30, "top":30, "radius":21, "txt":"桌上蠟燭位置改變"},
+                    {"left":48, "top":2,  "radius":18, "txt":"吊燈少一個"},
+                    {"left":78, "top":5,  "radius":18, "txt":"牆上相框少一個"}
+                ]
+            },
+            "q4":{
+                "quest":[
+                    {"txt":"綠", "color":"#C6172B" },
+                    {"txt":"紫", "color":"#1557CC" },
+                    {"txt":"黃", "color":"#51B239" },
+                    {"txt":"藍", "color":"#FF8710" },
+                    {"txt":"橙", "color":"#9225E8" }
+                ],
+                "ans":[
+                    {"txt":"紅", "val":"紅色"},
+                    {"txt":"黃", "val":"黃色"},
+                    {"txt":"綠", "val":"綠色"},
+                    {"txt":"藍", "val":"藍色"},
+                    {"txt":"紫", "val":"紫色"},
+                    {"txt":"橙", "val":"橙色"}
+                ]
+            },
+            "q5":{
+                "quest":[
+                    {"ans":"N", "type":"2x2", "left":[16, 1, 12, 29], "right":[16, 1, 12, 27]},
+                    {"ans":"N", "type":"3x3", "left":[5, 12, 31, 10, 32, 15, 26, 3, 30], "right":[5, 12, 31, 10, 32, 15, 26, 3, 36]},
+                    {"ans":"N", "type":"4x3", "left":[6, 8, 17, 19, 26, 31, 3, 16, 33, 28, 18, 23], "right":[6, 8, 17, 19, 26, 36, 3, 16, 33, 28, 18, 23]}
+                ]
+            },
+            "q6":{
+                "quest":[
+                    {"num":5, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":""},
+                    {"num":4, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":"再來一題，這次有4個喔！"},
+                    {"num":6, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":"再來一題，這次有6個喔！"}
+                ]
+            },            
+            "q7":{
+                "quest":[
+                    {"ans":72, "type":"2x", "qBox":[88, 89, "?", 71], "aBox":[63, 56, 70, 72, 67]},
+                    {"ans":20, "type":"3x", "qBox":[40, 38, 54, 22, "?", 36], "aBox":[22, 20, 29, 30, 28]},
+                    {"ans":5, "type":"4x", "qBox":[2, 8, "?", 14], "aBox":[3, 14, 13, 5, 16]}
+                ]
             }
         },{
-            "title":"題組二",
+            "title":"普通",
             "q1":{
                 "sound":"./mp3/Q1.mp3",
                 "answer":["test"]
@@ -19,17 +72,57 @@
             "q2":{
                 "sound":"./mp3/Normal_screen_B1_b1.m4a",
                 "answer":[9,4,2,7,8]
-            }
-        },
-        {
-            "title":"題組三",
-            "q1":{
-                "sound":"",
-                "answer":[]
             },
-            "q2":{
-                "sound":"./mp3/Normal_screen_B1_b1.m4a",
-                "answer":[9,4,2,7,8]
+            "q3":{
+                "before":"./img/Q3before.jpg",
+                "after":"./img/Q3after.jpg",
+                "pos":[
+                    {"left":52, "top":40, "radius":18, "txt":"枕頭少了一個"},
+                    {"left":50, "top":58, "radius":21, "txt":"少了貓咪"},
+                    {"left":30, "top":70, "radius":18, "txt":"拖鞋方向變了"},
+                    {"left":76, "top":72, "radius":21, "txt":"地毯變圓的"},
+                    {"left":2,  "top":74, "radius":18, "txt":"凳子少一張"},
+                    {"left":12, "top":14, "radius":18, "txt":"窗外雲朵變了"},
+                    {"left":30, "top":30, "radius":21, "txt":"桌上蠟燭位置改變"},
+                    {"left":48, "top":2,  "radius":18, "txt":"吊燈少一個"},
+                    {"left":78, "top":5,  "radius":18, "txt":"牆上相框少一個"}
+                ]
+            }, 
+            "q4":{
+                "quest":[
+                    {"txt":"綠", "color":"#C6172B" },
+                    {"txt":"紫", "color":"#1557CC" },
+                    {"txt":"黃", "color":"#51B239" },
+                    {"txt":"藍", "color":"#FF8710" },
+                    {"txt":"橙", "color":"#9225E8" }
+                ],
+                "ans":[
+                    {"txt":"紅", "val":"紅色"},
+                    {"txt":"黃", "val":"黃色"},
+                    {"txt":"綠", "val":"綠色"},
+                    {"txt":"藍", "val":"藍色"},
+                    {"txt":"紫", "val":"紫色"},
+                    {"txt":"橙", "val":"橙色"}
+                ]
+            },
+            "q5":{
+                "quest":[
+                    {"ans":"N", "type":"2x2", "left":[16, 1, 12, 29], "right":[16, 1, 12, 27]}
+                ]
+            },
+            "q6":{
+                "quest":[
+                    {"num":5, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":""},
+                    {"num":4, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":"再來一題，這次有4個喔！"},
+                    {"num":6, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":"再來一題，這次有6個喔！"}
+                ]
+            },
+            "q7":{
+                "quest":[
+                    {"ans":72, "type":"2x", "qBox":[88, 89, "?", 71], "aBox":[63, 56, 70, 72, 67]},
+                    {"ans":20, "type":"3x", "qBox":[40, 38, 54, 22, "?", 36], "aBox":[22, 20, 29, 30, 28]},
+                    {"ans":5, "type":"4x", "qBox":[2, 8, "?", 14], "aBox":[3, 14, 13, 5, 16]}
+                ]
             }
         }
     ]

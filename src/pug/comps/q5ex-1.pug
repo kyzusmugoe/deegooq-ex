@@ -1,15 +1,18 @@
 div#Q5ex-1.page.bg2(style="display:none")
     div.row
-        div.chatBox.q5-1a
-            div.text 接下來要請您「畫出一個時鐘」、「填上所有數字」，並將時間指示為【一點五十分】
+        div.chatBox.q5ex-1a
+            div.text 請您比較左右兩個圖，選擇「相同」或「不一樣」，一共連續3題，每題限時10秒喔！」
         div.character
-            img(src="./img/deegooq_3.svg")
-    div.row.fill
-    div.row
-        div.chatBox.q5-1c
-            div.text 點擊下方按鈕開始作答，您有60秒的時間作答喔！
+            img(src="./img/deegooq_2.svg")
+    div.row.fill.center
+        img.q5-intro(src="./img/q5-intro.svg")
     div.row.center
-        button#startQ5Timer.BPBtn.pageBtn.secondary(data-id="Q5ex-2")
+        span.txt 點擊下方「我準備好了」按紐，
+            br
+            | 即開始計時作答！
+
+    div.row.center
+        button#startQ5exTimer.BPBtn.pageBtn.secondary(data-id="Q5ex-2")
             span 繼續看下一步
    
     footer.f1.corner

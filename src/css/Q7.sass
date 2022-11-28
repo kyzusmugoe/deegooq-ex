@@ -1,0 +1,122 @@
+@use "sass:math"
+@mixin Q7()
+    #Q7-1, #Q7-2, #Q7-3       
+        div.chatBox
+            background-size: 100%
+            width: 100%
+            max-width: 360px
+            height: 230px
+            @include flexBox(center, center)
+            div.text
+                font-size: 20px
+                font-weight: 700
+                line-height: 29px
+                text-align: center
+                letter-spacing: 0em
+            
+            &.q7-1a
+                background: url('../img/chat_q4-1a.svg') no-repeat center center
+                background-size: 100%
+                &::after
+                    content: ''
+                    position: absolute
+                    width: 60px
+                    height: 62px
+                    background: url('../img/bubble_q5.svg') no-repeat center center
+                    top:4px
+                    right: -20px
+                div.text
+                    width: 280px
+                    margin-bottom: 16px
+           
+        .q7-intro
+            @include flexBox(center, center)
+            flex-direction: column
+            @media screen and (max-height:660px)
+                    flex-direction: row
+            img
+                width: 40%
+                margin-bottom: 10px
+                /*
+                    @media screen and (max-height:660px)
+                        width: 40%
+        .notice
+            color:#FFE7A6
+            text-align: center
+        #q7QuestBox
+            width: auto
+            @media screen and ( max-height: 660px)
+                width: 100%
+                
+        .grid-2x
+            display: grid
+            gap: 10px
+            grid-template-columns: 1fr 1fr
+        
+        .grid-3x
+            display: grid
+            gap: 10px
+            grid-template-columns: 1fr 1fr 1fr
+        
+        .grid-4x
+            display: grid
+            gap: 10px
+            grid-template-columns: 1fr 1fr 1fr 1fr
+
+        .qBox
+            border: 1px dashed #fff
+            padding:15px
+            border-radius: 15px
+            width: fit-content
+            margin: 0 auto
+            
+        .aBox
+            @include flexBox(center, center)
+            flex-wrap: wrap
+            .q7aBox
+                height: 80px
+                @include flexBox(center, center)
+                flex:0 0 33.33%
+                @media screen and ( max-height: 660px)
+                    flex:0 0 20%
+
+        .q7aIcon 
+            position: relative
+            &::before
+                position: absolute
+                content: ''
+                width: 70px
+                height: 70px
+                border-radius: 15px
+                border: 1px solid #fc0
+                top: calc( 50% - 35px )
+                left: calc( 50% - 35px )
+                @media screen and ( max-height: 660px)
+                    width: 60px
+                    height: 60px
+                    top: calc( 50% - 30px )
+                    left: calc( 50% - 30px )
+
+
+        .q7qIcon, .q7aIcon 
+            width: 50px
+            height: 50px
+            background: url('../img/Q7_icons_all.svg') no-repeat
+            background-size: 900px 250px           
+            
+            $max: 90
+            @for $i from 0 through $max 
+                &.icon-#{$i+1} 
+                    background-position: #{math.floor($i%18) * -50}px #{math.floor($i/18) * -50}px
+            
+            &.icon-known
+                background: url('../img/Q7_icons_known.svg') no-repeat center center 
+
+        .character
+            margin-top: -30px
+            z-index: -1
+            position: relative
+            img
+                max-width: 140px
+                width: 100%
+        

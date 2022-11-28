@@ -10,9 +10,9 @@ if(window.localStorage.getItem('deegooq_current_page')){
 }
 
 //測試
-currentPage = 'Q2-1'
+currentPage = 'Q6-1'
 
-//
+//主要資料物件
 let mainData = {}
 
 //使用者資料 從localStorage取得deegooq_current_page的頁面資料
@@ -21,9 +21,9 @@ if(window.localStorage.getItem('deegooq_current_data') && currentPage != 'start'
     //console.log('deegooq_current_page', collectData)
 }
 
-//讀取圖片資源管理
+//#region 讀取圖片資源管理
 const loadImgManager = ()=>{
-    const assetsList = ['logo.svg', 'btn_main.svg', 'btn_secondary.svg', 'Q3before.jpg', 'Q3after.jpg', 'bg_l.jpg', 'Q4-1_intro_L.png','plant_2.png','plant_1.png','bg_m.jpg', 'Q4-1_intro.png', 'Q3-2_intro.png', 'Q3-1_intro.png','Q3-2_intro_L.png', 'Q3-1_intro_L.png', 'bg2_l.svg', 'bg3_l.svg','pleaseTurn.svg','chat_q3-1a.svg','chat_q4-1a.svg','btn_main.svg','chat_q2-1a.svg','chat_q1-1a.svg','hand.svg','chat_q1-1c.svg','chat_1.svg','chat_2.svg','deegooq_0.svg','deegooq_1.svg','deegooq_2.svg','deegooq_3.svg','bubble_q2.svg','bubble_q3.svg','bubble_q4.svg','bubble_q5.svg','footer_corner.svg','deegooq_4.svg','bubble_q1.svg','timer.svg','btn_secondary.svg','play_btn.svg','chat_q1-1b.svg','chat_q2-1b.svg','chat_end.svg','Q2_btn_1.svg','Q2_btn_2.svg','akar-icons_arrow-left.svg','back.svg','btn_skip.svg','footer_1.svg','circle-notch-solid.svg','Q4stepper.svg','Q4card.svg']
+    const assetsList = ['logo.svg']
     let ct = 0
     const loadImgAssets = url =>{
         const img = new Image()
@@ -41,11 +41,9 @@ const loadImgManager = ()=>{
     }
     loadImgAssets(`./img/${assetsList[ct]}`)
 }
+//#endregion
 
-
-
-
-//防止double tap 測試
+//#region  防止double tap 測試
 window.onload = () => {
     document.addEventListener('touchstart', (event) => {
       if (event.touches.length > 1) {
@@ -62,9 +60,9 @@ window.onload = () => {
       lastTouchEnd = now;
     }, false);
 }
+//#endregion
 
 document.addEventListener('DOMContentLoaded', () => {
-    
     //#region 偵測頁面方向
     const detectOrientation =  () => {
         //console.log(window.orientation )
@@ -120,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //#endregion
  
-    //#region 個 人資料的button group
+    //#region 個人資料的button group
     const setButtonGroup = ()=>{
         document.querySelectorAll(".button-group").forEach(btn=>{
             btn.addEventListener("click", event=>{
@@ -172,6 +170,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //#endregion
 
+    //#region 語音播放元件
+    const soundPlayer = (btnID, barID, soundPath, complete)=>{
+        let sw = true;
+        const _progress =  document.querySelector(barID)
+        document.querySelector(btnID).addEventListener("click", ()=>{
+            if(!sw) return
+            sw = false
+            let mp3 = new Audio()
+            mp3.src= soundPath
+            mp3.play()
+            mp3.addEventListener('ended', ()=>{
+                complete()
+            })
+            mp3.addEventListener('timeupdate', ()=>{
+                _progress.style.width = `${Math.floor((mp3.currentTime/mp3.duration)*100)}%`
+            })
+        })
+    }
+    //#endregion
+
     //#region 題庫列表    
     const setList = data =>{
         const box = document.querySelector('#listBox')
@@ -186,6 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 q3()
                 q4()
                 q5ex()
+                q6()
+                q7()
                 openPage('#Q1-1')
             })
             box.appendChild(btn)
@@ -201,12 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if(!sw) return
             sw = false
             let mp3 = new Audio()
-            //mp3.src="./mp3/MCI_screen_E3_Q1.m4a"
             mp3.src= mainData.q1.sound
-            mp3.play()
-            /*mp3.addEventListener("canplaythrough",()=>{
-                mp3.play()
-            })*/            
+            mp3.play()           
             mp3.addEventListener('ended', ()=>{
                 sw = true
                 document.querySelector("#Q1isListened").removeAttribute("style")
@@ -250,23 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             btnBox.appendChild(btn)
         })
-        /*
-        document.querySelectorAll('#Q1-3 .needBuy').forEach(btn=>{
-            btn.addEventListener('click', event=>{
-                if(!btn.classList.contains('on')){
-                    btn.classList.add('on')
-                    //event.target.disabled = true
-                    needBuyList.push(event.target.dataset.buy)
-                    //console.log(needBuyList)
-                    if(needBuyList.length == 5){
-                        endOfQ1()
-                    }
-                }else{
-                    console.log("選過了")
-                }
-            })
-        })
-        */
         
         document.querySelector("#startQ1Timer").addEventListener('click',()=>{
             clearInterval(Q1Timer)
@@ -348,21 +347,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const BID = "Q3-4"
         const board = document.querySelector(`#${BID} .board`)
         let ans=[]//蒐集使用者點擊過後的資料
-
-        const cBtnPos=[
-            {left:52, top:40, radius:18, txt:'枕頭少了一個'},
-            {left:50, top:58, radius:21, txt:'少了貓咪'},
-            {left:30, top:70, radius:18, txt:'拖鞋方向變了'},
-            {left:76, top:72, radius:21, txt:'地毯變圓的'},
-            {left:2,  top:74, radius:18, txt:'凳子少一張'},
-            {left:12, top:14, radius:18, txt:'窗外雲朵變了'},
-            {left:30, top:30, radius:21, txt:'桌上蠟燭位置改變'},
-           // {left:33, top:35, radius:12, txt:'蠟燭位置變了'},
-            {left:48, top:2,  radius:18, txt:'吊燈少一個'},
-            {left:78, top:5,  radius:18, txt:'牆上相框少一個'},
-
-        ]
         
+        const cBtnPos=mainData.q3.pos
+        document.querySelector("#Q3-3 img.Q3before").src=mainData.q3.before
+        document.querySelector("#Q3-4 img.Q3after").src=mainData.q3.after
+
         cBtnPos.map(data=>{
             const _btn = document.createElement('div');
             board.appendChild(_btn)
@@ -466,7 +455,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const q4 = ()=>{
         //const currentAns= ["紅","藍","綠","橙","紫"]
         const ans= []
+        const colorBox =  document.querySelector("#Q4-2 .questColorBox")
+        const btnBox =  document.querySelector("#Q4-2 .colorBtnBox")
         let step = 0
+        
+        mainData.q4.quest.map(item=>{
+            const card = document.createElement('span')
+            card.classList.add('questColor')
+            card.style.color = item.color
+            card.innerHTML = item.txt
+            colorBox.appendChild(card)
+        })
 
         const renderQuestColor =()=>{
             document.querySelectorAll("#Q4-2 .questColor").forEach((color, index)=>{
@@ -477,17 +476,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
         }
-        document.querySelectorAll("#Q4-2 .colorBtn").forEach(btn=>{
-            btn.addEventListener('click', event=>{
-                if(step<5){               
 
-                    const _t = event.currentTarget 
-                    /*
-                    if(_t.classList.contains('on')){
-                        return
-                    }else{
-                        _t.classList.add('on')
-                    }*/
+        mainData.q4.ans.map(item=>{
+            const btn = document.createElement('button')
+            btn.classList.add('colorBtn')
+            btn.dataset.color = item.val
+            btn.innerHTML = item.txt
+            btn.addEventListener('click', event=>{
+                if(step<5){
+                    const _t = event.currentTarget                   
                     step++
                     renderQuestColor()
                     ans.push(_t.dataset.color)
@@ -495,18 +492,38 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {        
                         window.localStorage.setItem('deegooq_current_page', 'Q5-1')//設定當前頁面                    
                             setDataCollector('Q3', ans)
-                            openPage("#Q5-1")
+                            openPage("#Q5ex-1")
+                        }, 1000);
+                    }
+                }
+            })
+            btnBox.appendChild(btn)
+        })
+        /*
+        document.querySelectorAll("#Q4-2 .colorBtn").forEach(btn=>{
+            btn.addEventListener('click', event=>{
+                if(step<5){
+                    const _t = event.currentTarget                   
+                    step++
+                    renderQuestColor()
+                    ans.push(_t.dataset.color)
+                    if(step>=5){
+                        setTimeout(() => {        
+                        window.localStorage.setItem('deegooq_current_page', 'Q5-1')//設定當前頁面                    
+                            setDataCollector('Q3', ans)
+                            openPage("#Q5ex-1")
                         }, 1000);
                     }
                 }
             })
         })
+        */
         renderQuestColor()
     }
 
     //#endregion
 
-    //#region q5 畫時鐘 EX版棄用
+    //#region Q5 畫時鐘 EX版棄用
     /*
     const q5 = ()=>{        
         const canvas = document.querySelector("#drawCanvas");
@@ -580,25 +597,215 @@ document.addEventListener('DOMContentLoaded', () => {
     */
     //#endregion
     
-    //#region q5ex 
+    //#region Q5ex 
     const q5ex = ()=>{
+        const q5exAns=[]//使用者回答的資料
+        
+        let sn=0;
         let Q5exTimer
-        document.querySelector("#startQ5Timer").addEventListener('click',()=>{            
-            Q5exTimer = setTimer(60, "#Q5Timer .value",()=>{
-                //openPage("#Q1-2")
+        const snTxt = document.querySelector("#Q5ex-2 .infoBox .sn")
+        const box = document.querySelector("#q5QuestBox")
+        const leftBox = box.querySelector(".left")
+        const rightBox = box.querySelector(".right")
+       
+        
+        const renderIcon = (box, item)=>{
+            const icon = document.createElement('div')
+            icon.classList.add('q5Icon', `icon-${item}`)
+            box.append(icon)
+        }
+
+        const renderIconBox = ()=>{               
+            const _d = mainData.q5.quest[sn]
+            leftBox.classList.add(`grid-${_d.type}`)
+            rightBox.classList.add(`grid-${_d.type}`)
+            while (leftBox.firstChild) {
+                leftBox.removeChild(leftBox.lastChild)
+            }
+            while (rightBox.firstChild) {
+                rightBox.removeChild(rightBox.lastChild)
+            }
+            _d.left.map(item=>{ renderIcon(leftBox, item) })
+            _d.right.map(item=>{ renderIcon(rightBox, item) })
+        }
+
+        const setQ5Timer=()=>{
+            Q5exTimer = setTimer(10, "#Q5exTimer .value",()=>{
                 clearInterval(Q5exTimer)
+                sn++
+                
+                if(mainData.q5.quest[sn]){   
+                    renderIconBox()
+                    setQ5Timer()
+                    snTxt.innerHTML = String(sn+1)
+                }else{
+                    openPage("#Q6-1")
+                } 
+            })
+        }
+
+        document.querySelector("#startQ5exTimer").addEventListener('click',()=>{            
+            setQ5Timer()
+        })
+        
+        renderIconBox()
+        document.querySelectorAll("#Q5ex-2 .ansBtn").forEach(btn=>{
+            btn.addEventListener('click', event=>{
+                q5exAns.push(event.target.dataset.ans)
+                clearInterval(Q5exTimer)
+                sn++
+                if(mainData.q5.quest[sn]){   
+                    renderIconBox()
+                    setQ5Timer()
+                    snTxt.innerHTML = String(sn+1)
+                }else{
+                    setDataCollector('Q5', q5exAns)
+                    openPage("#Q6-1")
+                }                
             })
         })
-
     }
     //#endregion  
 
+    //#region Q6
+    const q6 = ()=>{
+        let sn=0
+        let ansRes = []//所有的回答
+        let ansBox = document.querySelector("#Q6-3 .mySelection")
+        const renderMySelection = data =>{
+            let last
+            const sn = data.answers.length
+            const _curent = document.querySelector(data.current)
+            _curent.classList.add('on', 'current' , parseInt(data.answers)? "isNum" : "isTxt")
+            _curent.querySelector('.value').innerHTML = data.answers
+            
+            if(last){
+                last.classList.remove('current')
+            }
+            last = _curent
+        }
+        //----
+        let res = []//回答的收集容器
+        const render = ()=> {
+            //題目卡
+            ansBox.className=""
+            ansBox.classList.add("mySelection", `grid-${mainData.q6.quest[sn].num}`)
+            document.querySelector("#Q6-1 .total").innerHTML = mainData.q6.quest[sn].num
+            document.querySelector("#Q6-2 .total").innerHTML = mainData.q6.quest[sn].num
+            document.querySelector("#Q6-3 .total").innerHTML = mainData.q6.quest[sn].num
+            document.querySelector("#Q6-2 .mesg").innerHTML = mainData.q6.quest[sn].mesg
+            while (ansBox.firstChild) {
+                ansBox.removeChild(ansBox.lastChild)
+            }
+
+            for(let i=0;i<mainData.q6.quest[sn].num;i++){
+                let card = document.createElement('div')
+                let val = document.createElement('span')
+                val.innerHTML = "?" 
+                val.classList.add('value')
+                card.classList.add('Q6_answer')
+                card.appendChild(val)
+                ansBox.appendChild(card)                
+            }
+            
+            soundPlayer(
+                "#Q6-2_PlayMp3",
+                "#Q6-2_Progress .bar",
+                mainData.q6.quest[sn].sound,
+                ()=>{
+                    setTimeout(() => {
+                        openPage("#Q6-3")
+                    }, 1000)
+                }
+            )
+        }
+
+        document.querySelectorAll("#Q6-3 .Q6_btn").forEach(btn=>{
+            btn.addEventListener("click", event=>{            
+                const ans = event.target.dataset.ans  
+                if(res.length < parseInt(mainData.q6.quest[sn].num)+1){
+                    res.push(ans)
+                    renderMySelection({
+                        current: `#Q6-3 .mySelection .Q6_answer:nth-child(${res.length}`,
+                        answers: res[res.length-1]
+                    })
+                    if(res.length == mainData.q6.quest[sn].num){
+                        setTimeout(() => {
+                            sn++
+                            ansRes.push(res)
+                            res=[]
+                            if(mainData.q6.quest[sn]){
+                                openPage("#Q6-2")
+                                render()                           
+                            }else{
+                                openPage("#Q7-1") 
+                            }
+                        }, 1000);
+                    }
+                }
+            })
+        })
+        
+        render()
+    }
+    //#endregion
+
+    //#region Q7
+    const q7 = ()=>{
+        let sn = 0
+        const q7Ans=[]//使用者回答的資料
+        const qBox = document.querySelector("#q7QuestBox .qBox")
+        const aBox = document.querySelector("#q7QuestBox .aBox")
+        const renderQ7=()=>{   
+            const _d  = mainData.q7.quest[sn]
+            qBox.className="";
+            qBox.classList.add("qBox", `grid-${_d.type}`)
+            while (qBox.firstChild) {
+                qBox.removeChild(qBox.lastChild)
+            }
+            _d.qBox.map(val =>{
+                const icon = document.createElement('div')
+                icon.classList.add('q7qIcon', `icon-${val=="?" ? "known" : val }`)
+                qBox.appendChild(icon)
+                
+            })
+            while (aBox.firstChild) {
+                aBox.removeChild(aBox.lastChild)
+            }
+            _d.aBox.map(val =>{
+                const _box = document.createElement('div')
+                const _icon = document.createElement('div')
+                _box.classList.add('q7aBox')
+                _icon.classList.add('q7aIcon', `icon-${val}`)
+                _box.dataset.val = val            
+                _box.appendChild(_icon)            
+                _box.addEventListener('click', event=>{
+                    q7Ans.push(_d.ans == event.currentTarget.dataset.val ? "Y" : "N")
+                    sn++
+                    console.log(mainData.q7.quest[sn])
+                    if(mainData.q7.quest[sn]){
+                        openPage("#Q7-3")
+                        renderQ7()
+                    }else{
+                        setDataCollector('Q7', q7Ans)
+                        openPage("#Q1-3")
+                    }
+                })
+                aBox.appendChild(_box)
+            }) 
+        }
+        renderQ7()
+    }
+
+
+    //#endregion
     //init
     closeAll()
     document.querySelector(`#${currentPage}`).style.display = "flex"
     loadImgManager()
     setBtnsHandler()
     setButtonGroup()
+
     //#region 讀取json設定檔
     fetch("./js/data.json", {
         method: 'GET'
@@ -624,7 +831,10 @@ document.addEventListener('DOMContentLoaded', () => {
             q3()
             q4()
             q5ex()
+            q6()
+            q7()
     }).catch(error => {
         console.error('json 取得失敗:', error)
     });
+    //#endregion
 })
