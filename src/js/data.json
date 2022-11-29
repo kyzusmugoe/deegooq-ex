@@ -44,9 +44,10 @@
             },
             "q5":{
                 "quest":[
-                    {"ans":"N", "type":"2x2", "left":[16, 1, 12, 29], "right":[16, 1, 12, 27]},
-                    {"ans":"N", "type":"3x3", "left":[5, 12, 31, 10, 32, 15, 26, 3, 30], "right":[5, 12, 31, 10, 32, 15, 26, 3, 36]},
-                    {"ans":"N", "type":"4x3", "left":[6, 8, 17, 19, 26, 31, 3, 16, 33, 28, 18, 23], "right":[6, 8, 17, 19, 26, 36, 3, 16, 33, 28, 18, 23]}
+                    {"type":"2x2", "left":"./img/q5-left-1.svg", "right":"./img/q5-right-1.svg"},
+                    {"type":"3x3", "left":"./img/q5-left-2.svg", "right":"./img/q5-right-2.svg"},
+                    {"type":"3x3", "left":"./img/q5-left-2.svg", "right":"./img/q5-right-2.svg"},
+                    {"type":"4x3", "left":"./img/q5-left-3.svg", "right":"./img/q5-right-3.svg"}
                 ]
             },
             "q6":{

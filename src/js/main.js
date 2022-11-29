@@ -10,7 +10,7 @@ if(window.localStorage.getItem('deegooq_current_page')){
 }
 
 //測試
-currentPage = 'Q6-1'
+currentPage = 'start'
 
 //主要資料物件
 let mainData = {}
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const setTimer = (ct, VID, endF)=>{
         let _ct = ct
         const timer = setInterval(()=>{
-            console.log(`${VID} timer count left ${_ct}`)
+            //console.log(`${VID} timer count left ${_ct}`)
             _ct--
             document.querySelector(VID).innerHTML = _ct
             if(_ct == 0){
@@ -523,84 +523,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //#endregion
 
-    //#region Q5 畫時鐘 EX版棄用
-    /*
-    const q5 = ()=>{        
-        const canvas = document.querySelector("#drawCanvas");
-        const pen =  document.querySelector("#pen")
-        const eraser =  document.querySelector("#eraser")
-        const signaturePad = new SignaturePad(canvas);
-        const setPen = ()=>{
-            signaturePad.penColor = '#000'
-            signaturePad.maxWidth = 1
-            pen.style.display = "none"
-            eraser.style.display="block"
-        }
-
-        signaturePad.backgroundColor = '#fff'
-        signaturePad.minWidth = 1
-        signaturePad.maxWidth = 1
-        signaturePad.clear()
-
-        const resizeCanvas = ()=> {
-            const _w = window.screen.width < 750 ? window.screen.width- 50 : 700 
-            const _h = window.screen.width < 750 ? _w * 0.85 : _w *0.7
-            
-            canvas.width = _w
-            canvas.height = _h
-            //canvas.getContext("2d").scale(ratio, ratio);
-            signaturePad.clear(); // otherwise isEmpty() might return incorrect value
-        }
-        
-        window.addEventListener("resize", resizeCanvas);
-        resizeCanvas();
-
-        let Q5Timer
-        document.querySelector("#startQ5Timer").addEventListener('click',()=>{            
-            Q5Timer = setTimer(60, "#Q5Timer .value",()=>{
-                openPage("#Q1-2")
-                clearInterval(Q5Timer)
-            })
-        })
-        
-        pen.addEventListener('click',()=>{
-            setPen()
-        })
-        
-        eraser.addEventListener('click',()=>{
-            signaturePad.penColor = '#fff'
-            signaturePad.maxWidth = 20
-            pen.style.display="block"
-            eraser.style.display="none"
-        })
-        
-        const endOfQ5 = ()=>{            
-            clearInterval(Q5Timer)
-            openPage("#Q1-2")
-            window.localStorage.setItem('deegooq_current_page', 'Q1-2')//設定當前頁面
-            setDataCollector('Q5', signaturePad.toDataURL("image/jpeg"))
-        }
-        
-        document.querySelector("#clearAll").addEventListener('click', ()=>{
-            signaturePad.clear()
-            setPen()
-        })
-
-        document.querySelector("#drawDone").addEventListener('click', ()=>{
-            endOfQ5()
-        })
-
-        document.querySelector("#Q5Skip").addEventListener('click', ()=>{
-            endOfQ5()
-        })
-    }
-    */
-    //#endregion
-    
-    //#region Q5ex 
-    const q5ex = ()=>{
+    //#region Q5ex
+    /* 
+    const q5exBak = ()=>{
         const q5exAns=[]//使用者回答的資料
-        
+
         let sn=0;
         let Q5exTimer
         const snTxt = document.querySelector("#Q5ex-2 .infoBox .sn")
@@ -663,6 +590,62 @@ document.addEventListener('DOMContentLoaded', () => {
                     openPage("#Q6-1")
                 }                
             })
+        })
+    }*/
+
+    //#region Q5ex
+    const q5ex = ()=>{
+        const q5exAns=[]//使用者回答的資料
+
+        let sn=0;
+        let Q5exTimer
+        const snTxt = document.querySelector("#Q5ex-2 .infoBox .sn")
+        const box = document.querySelector("#q5QuestBox")
+        const leftImg = box.querySelector("#q5QuestBox img.left")
+        const rightImg = box.querySelector("#q5QuestBox img.right")
+       
+        const renderIconBox = ()=>{         
+            leftImg.src = mainData.q5.quest[sn].left
+            rightImg.src= mainData.q5.quest[sn].right
+        }
+
+        const setQ5Timer=()=>{
+            Q5exTimer = setTimer(10, "#Q5exTimer .value",()=>{
+                clearInterval(Q5exTimer)
+                sn++
+                
+                if(mainData.q5.quest[sn]){   
+                    renderIconBox()
+                    setQ5Timer()
+                    snTxt.innerHTML = String(sn+1)
+                }else{
+                    openPage("#Q6-1")
+                } 
+            })
+        }
+
+        document.querySelector("#startQ5exTimer").addEventListener('click',()=>{            
+            setQ5Timer()
+        })
+        renderIconBox()
+        document.querySelectorAll("#Q5ex-2 .ansBtn").forEach(btn=>{
+            btn.addEventListener('click', event=>{
+                q5exAns.push(event.target.dataset.ans)
+                clearInterval(Q5exTimer)
+                sn++
+                if(mainData.q5.quest[sn]){   
+                    renderIconBox()
+                    setQ5Timer()
+                    snTxt.innerHTML = String(sn+1)
+                }else{
+                    setDataCollector('Q5', q5exAns)
+                    openPage("#Q6-1")
+                }                
+            })
+        })
+        document.querySelector("#Q5Skip").addEventListener('click', event=>{
+            clearInterval(Q5exTimer)
+            openPage("#Q6-1")
         })
     }
     //#endregion  
@@ -753,9 +736,28 @@ document.addEventListener('DOMContentLoaded', () => {
     //#region Q7
     const q7 = ()=>{
         let sn = 0
+        let Q7exTimer
         const q7Ans=[]//使用者回答的資料
         const qBox = document.querySelector("#q7QuestBox .qBox")
         const aBox = document.querySelector("#q7QuestBox .aBox")
+
+        const setQ7Timer=()=>{
+            Q7exTimer = setTimer(20, "#Q7exTimer .value",()=>{
+                clearInterval(Q7exTimer)
+                sn++                
+                if(mainData.q7.quest[sn]){   
+                    document.querySelector("#Q7exTimer .value").innerHTML = 20
+                    setQ7Timer()
+                    renderQ7()
+                }else{
+                    openPage("#Q1-3")
+                } 
+            })
+        }
+        document.querySelector("#startQ7Timer").addEventListener('click',()=>{            
+            setQ7Timer()
+        })
+
         const renderQ7=()=>{   
             const _d  = mainData.q7.quest[sn]
             qBox.className="";
@@ -784,17 +786,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     sn++
                     console.log(mainData.q7.quest[sn])
                     if(mainData.q7.quest[sn]){
-                        openPage("#Q7-3")
+                        //openPage("#Q7-3")
+                        clearInterval(Q7exTimer)
+                        document.querySelector("#Q7exTimer .value").innerHTML = 20
+                        setQ7Timer()
                         renderQ7()
                     }else{
                         setDataCollector('Q7', q7Ans)
-                        openPage("#Q1-3")
                     }
                 })
                 aBox.appendChild(_box)
             }) 
         }
+        
         renderQ7()
+
+        document.querySelector("#Q7Skip").addEventListener('click', event=>{
+            clearInterval(Q7exTimer)
+            openPage("#Q1-2")
+        })
     }
 
 

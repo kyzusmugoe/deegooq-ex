@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="initial-scale=1,width=device-width,minimum-scale=1,maximum-scale=1,viewport-fit=cover">
+    <title>Dee-Goo-Q</title>
+    <link href="css/index.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app landscape" style="display:none"><img class="logo" src="./img/logo.svg">
+        <div class="box">
+            <div class="character">
+                <div class="chat">
+                    <div class="text">請將裝置轉為「直向」繼續使用。</div>
+                </div><img src="./img/deegooq_0.svg">
+            </div><img src="./img/pleaseTurn.svg">
+        </div>
+    </div>
+    <div class="app portrait">
+        <div class="page bg1" id="start">
+            <div class="row center">
+                <img class="logo" src="./img/logo.svg">
+            </div>
+      
+            <div class="row center btnBox">
+                <button class="BPBtn pageBtn main bubbleQ" data-id="personal">
+                    <img class="hand" src="./img/hand.svg">
+                    <span>前往 認知刺激</span>
+                </button>
+            </div>
+
+            <div class="row center btnBox">
+                <button class="BPBtn pageBtn main red bubbleEx" data-id="personal">
+                    <img class="hand" src="./img/hand.svg">
+                    <span>前往 認知運動</span>
+                </button>
+            </div>
+            
+            <footer class="f1"></footer>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        //#region 偵測頁面方向
+        const detectOrientation = () => {
+            //console.log(window.orientation )
+            if (window.orientation == 90 || window.orientation == -90) {
+                document.querySelector(".app.landscape").style.display = 'flex'
+                document.querySelector(".app.portrait").style.display = 'none'
+            } else {
+                document.querySelector(".app.landscape").style.display = 'none'
+                document.querySelector(".app.portrait").style.display = 'flex'
+            }
+        }
+
+        window.addEventListener('resize', detectOrientation)
+        detectOrientation()
+    })
+</script>

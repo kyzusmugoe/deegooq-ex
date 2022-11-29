@@ -1,4 +1,4 @@
-@use "sass:math"
+//@use "sass:math"
 @mixin Q5()
     #Q5-1, #Q5-2,#Q5ex-1, #Q5ex-2
         overflow-x: hidden
@@ -24,32 +24,17 @@
                 right: 0px
 
         #q5QuestBox
-            height: 150px
+                
             @include flexBox(center, center)
+
             .left, .right
-                //border:1px solid #fff
-                display: grid
-                gap: 3px
-                padding: 5px
-                margin: 15px
-                &.grid-2x2
-                    grid-template-columns: 1fr 1fr
-                &.grid-3x3
-                    grid-template-columns: 1fr 1fr 1fr
-                &.grid-4x3
-                    grid-template-columns: 1fr 1fr 1fr 1fr
+                width: 140px    
+                padding: 10px
+                
+                @media screen and (max-height:660px)
+                    width: 100px    
+            
 
-                .q5Icon
-                    background-image: url('./img/g5-icons.svg')
-                    background-repeat: no-repeat
-                    background-size: 180px 180px
-                    width: 30px
-                    height: 30px
-
-                    $max: 35
-                    @for $i from 0 through $max 
-                        &.icon-#{$i+1} 
-                            background-position: #{math.floor($i%6) * -30}px #{math.floor($i/6) * -30}px
         .ansBtn
             justify-self: center
             width: 100px
