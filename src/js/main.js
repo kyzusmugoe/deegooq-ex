@@ -95,8 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const openPage = pageID =>{
         closeAll()
-        window.localStorage.setItem('deegooq_current_page', pageID.replace('#',''))//設定當前頁面
+        //window.localStorage.setItem('deegooq_current_page', pageID.replace('#',''))//設定當前頁面
         document.querySelector(pageID).style.display = "flex"
+    }
+
+    const stayPage = pageID =>{
+        console.log('stay page', pageID)
+        window.localStorage.setItem('deegooq_current_page', pageID)//紀錄使用者最後停留的頁面
     }
 
     //將所有的pageBtn設定click後的行為
@@ -105,6 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener("click", event => {
                 const pageID = event.currentTarget.dataset.id
                 //window.localStorage.setItem('deegooq_current_page', pageID)//設定當前頁面
+                if(event.currentTarget.dataset.stay){
+                    stayPage(event.currentTarget.dataset.stay)
+                }
                 openPage(`#${pageID}`)
             })
         })
@@ -146,7 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //#endregion
 
     document.querySelector("#goSurveycake").addEventListener('click',()=>{
-        window.localStorage.setItem('deegooq_current_page', 'start')//設定當前頁面
+        //window.localStorage.setItem('deegooq_current_page', 'start')//設定當前頁面
+        stayPage('start')
         setTimeout(() => {
             window.open(surveycakeURL, '_self')
         }, 100);
@@ -217,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 q6()
                 q7()
                 openPage('#Q1-1')
+                stayPage('Q1-1')
                 setDataCollector('pack', row.title)
                 window.localStorage.setItem('packNum', event.target.dataset.sn)
             })
@@ -262,8 +272,9 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(Q1Timer)            
             setTimeout(() => { 
                 openPage('#end')
+                stayPage('end')
             }, 1000);
-            window.localStorage.setItem('deegooq_current_page', 'end')//設定當前頁面
+            //window.localStorage.setItem('deegooq_current_page', 'end')//設定當前頁面
         }
 
         const btnBox = document.querySelector("#Q1-3 .btnBox")
@@ -344,6 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     setDataCollector('Q2', a2)
                     openPage("#Q2-2")
+                    stayPage('Q2-1')
                 }, 1000);
             })
             mp3.addEventListener('timeupdate', ()=>{
@@ -360,7 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(a2.length == 5){
                         setTimeout(() => {
                             setDataCollector('Q2', a2)
-                            openPage("#Q3-1")    
+                            openPage("#Q3-1")
+                            stayPage('Q3-1')    
                         }, 1000);
                     }
                 }
@@ -450,6 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(Q3ATimer)
                 setTimeout(() => {
                     openPage("#Q4-1")
+                    stayPage('Q4-1')
                 }, 1500);
             }       
         })
@@ -457,12 +471,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const endOfQ3_4 = ()=>{
             clearInterval(Q3ATimer)
             openPage("#Q4-1")
+            stayPage('Q4-1')
             setDataCollector('Q3', ans)
         }
 
         document.querySelector("#startQ3beforeTimer").addEventListener('click',()=>{
             Q3BTimer = setTimer(30, "#Q3beforeTimer .value",()=>{
                 openPage("#Q3-4")
+                stayPage('Q3-1')
                 clearInterval(Q3BTimer)
                 Q3ATimer = setTimer(40, "#Q3AfterTimer .value",()=>{
                     endOfQ3_4()
@@ -528,9 +544,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     ans.push(_t.dataset.color)
                     if(step>=5){
                         setTimeout(() => {        
-                        window.localStorage.setItem('deegooq_current_page', 'Q5-1')//設定當前頁面                    
+                            //window.localStorage.setItem('deegooq_current_page', 'Q5-1')//設定當前頁面                    
                             setDataCollector('Q4', ans)
                             openPage("#Q5ex-1")
+                            stayPage('Q5ex-1')
                         }, 1000);
                     }
                 }
@@ -659,6 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }else{
                     setDataCollector('Q5', q5exAns)
                     openPage("#Q6-1")
+                    stayPage('Q6-1')
                 }                
             })
         })
@@ -666,6 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setDataCollector('Q5', "skip")
             clearInterval(Q5exTimer)
             openPage("#Q6-1")
+            stayPage('Q6-1')
         })
     }
     //#endregion  
@@ -744,6 +763,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             }else{
                                 setDataCollector('Q6', ansRes)
                                 openPage("#Q7-1") 
+                                stayPage('Q7-1')
                             }
                         }, 1000);
                     }
@@ -826,6 +846,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector("#Q7Skip").addEventListener('click', event=>{
             clearInterval(Q7exTimer)
             openPage("#Q1-2")
+            stayPage('Q1-2')
         })
     }
 
@@ -841,6 +862,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(Q7exTimer)
             setDataCollector('Q7', q7Ans)
             openPage("#Q1-2")
+            stayPage('Q1-2')
         }
 
         const setQ7Timer=()=>{
@@ -905,6 +927,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setDataCollector('Q7', "skip")
             clearInterval(Q7exTimer)            
             openPage("#Q1-2")
+            stayPage('Q1-2')
         })
         
         renderQ7()
@@ -915,7 +938,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //init
     closeAll()
+    //特別處理(應急作法)
+    
     document.querySelector(`#${currentPage}`).style.display = "flex"
+
+
+
     loadImgManager(
         'img',
         ['akar-icons_arrow-left.svg','back.svg','bg2_l.svg','bg3_l.svg','bg_l.jpg','bg_m.jpg','btn_main.svg','btn_secondary.svg','btn_skip.svg','bubble_q1.svg','bubble_q2.svg','bubble_q3.svg','bubble_q4.svg','bubble_q5.svg','bubble_q6.svg','bubble_q7.svg','chat_1.svg','chat_2.svg','chat_end.svg','chat_q1-1a.svg','chat_q1-1b.svg','chat_q1-1c.svg','chat_q2-1a.svg','chat_q2-1b.svg','chat_q3-1a.svg','chat_q4-1a.svg','circle-notch-solid.svg','deegooq_0.png','deegooq_0.svg','deegooq_1.svg','deegooq_2.svg','deegooq_3.svg','deegooq_4.svg','footer_1.svg','footer_corner.svg','g5-icons.svg','hand.svg','logo.svg','plant_1.png','plant_2.png','play_btn.svg','pleaseTurn.svg','Q2_btn_1.svg','Q2_btn_2.svg','Q3-1_intro.png','Q3-1_intro_L.png','Q3-2_intro.png','Q3-2_intro_L.png','Q3after.jpg','Q3before.jpg','Q4-1_intro.png','Q4-1_intro_L.png','Q4card.svg','Q4stepper.svg','q5-icons-map.jpg','q5-intro.svg','q5-left-1.svg','q5-left-2.svg','q5-left-3.svg','q5-right-1.svg','q5-right-2.svg','q5-right-3.svg','q6-intro.svg','q7-intro_1.svg','q7-intro_2.svg','Q7_icons_all.jpg','Q7_icons_all.svg','Q7_icons_known.svg','timer.svg'],
