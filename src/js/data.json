@@ -1,14 +1,13 @@
 {
     "list":[
         {
-            "title":"簡單",
+            "title":"題組1",
             "q1":{
                 "sound":"./mp3/MCI_screen_E3_Q1.m4a",
-                "answer" : [ "牛奶", "西瓜", "醬油", "青菜", "玉米", "牛奶", "豆腐", "泡麵", "豬肉", "香腸", "南瓜", "紅豆", "冬粉", "豆漿", "茄子", "蒟蒻"]
+                "answer" : [ "牛奶", "西瓜", "醬油", "青菜", "玉米", "雞蛋", "豆腐", "泡麵", "豬肉", "香腸", "南瓜", "紅豆", "冬粉", "豆漿", "茄子", "蒟蒻"]
             },
             "q2":{
-                "sound":"./mp3/Normal_screen_B1_b1.m4a",
-                "answer":[9,4,2,7,8]
+                "sound":"./mp3_2/Normal_screen_B1_b1.m4a"
             },
             "q3":{
                 "before":"./img/Q3before.jpg",
@@ -44,85 +43,144 @@
             },
             "q5":{
                 "quest":[
-                    {"type":"2x2", "left":"./img/q5-left-1.svg", "right":"./img/q5-right-1.svg"},
-                    {"type":"3x3", "left":"./img/q5-left-2.svg", "right":"./img/q5-right-2.svg"},
-                    {"type":"3x3", "left":"./img/q5-left-2.svg", "right":"./img/q5-right-2.svg"},
-                    {"type":"4x3", "left":"./img/q5-left-3.svg", "right":"./img/q5-right-3.svg"}
+                    {"type":"2x2", "left":"./img_2/Q5-1-1-L.svg", "right":"./img_2/Q5-1-1-R.svg"},
+                    {"type":"3x3", "left":"./img_2/Q5-1-2-L.svg", "right":"./img_2/Q5-1-2-R.svg"},
+                    {"type":"4x3", "left":"./img_2/Q5-1-3-L.svg", "right":"./img_2/Q5-1-3-R.svg"}
                 ]
             },
             "q6":{
                 "quest":[
-                    {"num":5, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":""},
-                    {"num":4, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":"再來一題，這次有4個喔！"},
-                    {"num":6, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":"再來一題，這次有6個喔！"}
+                    {"num":4, "sound":"./mp3_2/Normal_screen_C2_a1.m4a", "mesg":""}
                 ]
             },            
             "q7":{
                 "quest":[
-                    {"ans":72, "type":"2x", "qBox":[88, 89, "?", 71], "aBox":[63, 56, 70, 72, 67]},
-                    {"ans":20, "type":"3x", "qBox":[40, 38, 54, 22, "?", 36], "aBox":[22, 20, 29, 30, 28]},
-                    {"ans":5, "type":"4x", "qBox":[2, 8, "?", 14], "aBox":[3, 14, 13, 5, 16]}
+                    {"qBox":"./img_2/Q7-1.svg", "aBox":["./img_2/Q7-1-a.svg", "./img_2/Q7-1-b.svg", "./img_2/Q7-1-c.svg", "./img_2/Q7-1-d.svg", "./img_2/Q7-1-e.svg"]},
+                    {"qBox":"./img_2/Q7-2.svg", "aBox":["./img_2/Q7-2-a.svg", "./img_2/Q7-2-b.svg", "./img_2/Q7-2-c.svg", "./img_2/Q7-2-d.svg", "./img_2/Q7-2-e.svg"]},
+                    {"qBox":"./img_2/Q7-3.svg", "aBox":["./img_2/Q7-3-a.svg", "./img_2/Q7-3-b.svg", "./img_2/Q7-3-c.svg", "./img_2/Q7-3-d.svg", "./img_2/Q7-3-e.svg"]},
+                    {"qBox":"./img_2/Q7-4.svg", "aBox":["./img_2/Q7-4-a.svg", "./img_2/Q7-4-b.svg", "./img_2/Q7-4-c.svg", "./img_2/Q7-4-d.svg", "./img_2/Q7-4-e.svg"]}
                 ]
             }
         },{
-            "title":"普通",
+            "title":"題組2",
             "q1":{
-                "sound":"./mp3/Q1.mp3",
-                "answer":["test"]
+                "sound":"./mp3_2/MCI_screen_E1_Q2.mp3",
+                "answer" : [ "菊花", "脖子", "綠色", "耳朵", "毛巾", "手帕", "肩膀", "橘色", "警局", "郵差", "臉盆", "黃色", "蓮花", "藍色", "郵局", "毛髮" ]
             },
             "q2":{
-                "sound":"./mp3/Normal_screen_B1_b1.m4a",
-                "answer":[9,4,2,7,8]
+                "sound":"./mp3_2/Normal_screen_B1_b2.m4a",
+                "answer":[3,7,5,2,8]
             },
             "q3":{
-                "before":"./img/Q3before.jpg",
-                "after":"./img/Q3after.jpg",
+                "before":"./img_2/Q3-2-A.jpg",
+                "after":"./img_2/Q3-2-B.jpg",
                 "pos":[
-                    {"left":52, "top":40, "radius":18, "txt":"枕頭少了一個"},
-                    {"left":50, "top":58, "radius":21, "txt":"少了貓咪"},
-                    {"left":30, "top":70, "radius":18, "txt":"拖鞋方向變了"},
-                    {"left":76, "top":72, "radius":21, "txt":"地毯變圓的"},
-                    {"left":2,  "top":74, "radius":18, "txt":"凳子少一張"},
-                    {"left":12, "top":14, "radius":18, "txt":"窗外雲朵變了"},
-                    {"left":30, "top":30, "radius":21, "txt":"桌上蠟燭位置改變"},
-                    {"left":48, "top":2,  "radius":18, "txt":"吊燈少一個"},
-                    {"left":78, "top":5,  "radius":18, "txt":"牆上相框少一個"}
+					{"left":76, "top":55, "radius":18, "txt":"狗的方向變了"},
+					{"left":50, "top":22, "radius":15, "txt":"蝴蝶不見了"},
+					{"left":16, "top":55, "radius":18, "txt":"沙灘球不見了"},
+					{"left":45, "top":36, "radius":15, "txt":"溜滑梯旁小花少了"},
+					{"left":26, "top":25, "radius":18, "txt":"遠方樹木少了"},
+					{"left":40, "top":56, "radius":15, "txt":"女孩戴了帽子"},
+					{"left":60, "top":-5, "radius":18, "txt":"多了氣球"},
+					{"left":49, "top":72, "radius":17, "txt":"多了玩具"},
+					{"left":30, "top":-3, "radius":18, "txt":"雲朵不見了"},
+					{"left":67, "top":80, "radius":18, "txt":"樹叢不見了"}
                 ]
-            }, 
+            },
             "q4":{
                 "quest":[
-                    {"txt":"綠", "color":"#C6172B" },
                     {"txt":"紫", "color":"#1557CC" },
-                    {"txt":"黃", "color":"#51B239" },
+                    {"txt":"綠", "color":"#C6172B" },
+                    {"txt":"橙", "color":"#9225E8" },
                     {"txt":"藍", "color":"#FF8710" },
-                    {"txt":"橙", "color":"#9225E8" }
+                    {"txt":"黃", "color":"#51B239" }
                 ],
                 "ans":[
-                    {"txt":"紅", "val":"紅色"},
-                    {"txt":"黃", "val":"黃色"},
-                    {"txt":"綠", "val":"綠色"},
-                    {"txt":"藍", "val":"藍色"},
-                    {"txt":"紫", "val":"紫色"},
-                    {"txt":"橙", "val":"橙色"}
+					{"txt":"紅", "val":"紅色"},
+					{"txt":"黃", "val":"黃色"},
+					{"txt":"綠", "val":"綠色"},
+					{"txt":"藍", "val":"藍色"},
+					{"txt":"紫", "val":"紫色"},
+					{"txt":"橙", "val":"橙色"}
                 ]
             },
             "q5":{
                 "quest":[
-                    {"ans":"N", "type":"2x2", "left":[16, 1, 12, 29], "right":[16, 1, 12, 27]}
+                    {"type":"2x2", "left":"./img_2/Q5-2-1-L.svg", "right":"./img_2/Q5-2-1-R.svg"},
+                    {"type":"3x3", "left":"./img_2/Q5-2-2-L.svg", "right":"./img_2/Q5-2-2-R.svg"},
+                    {"type":"4x3", "left":"./img_2/Q5-2-3-L.svg", "right":"./img_2/Q5-2-3-R.svg"}
                 ]
             },
             "q6":{
                 "quest":[
-                    {"num":5, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":""},
-                    {"num":4, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":"再來一題，這次有4個喔！"},
-                    {"num":6, "sound":"./mp3/Normal_screen_B1_b1.m4a", "mesg":"再來一題，這次有6個喔！"}
+                    {"num":4, "sound":"./mp3_2/Normal_screen_C2_a2.m4a", "mesg":""}
                 ]
-            },
+            },            
             "q7":{
                 "quest":[
-                    {"ans":72, "type":"2x", "qBox":[88, 89, "?", 71], "aBox":[63, 56, 70, 72, 67]},
-                    {"ans":20, "type":"3x", "qBox":[40, 38, 54, 22, "?", 36], "aBox":[22, 20, 29, 30, 28]},
-                    {"ans":5, "type":"4x", "qBox":[2, 8, "?", 14], "aBox":[3, 14, 13, 5, 16]}
+                    {"qBox":"./img_2/Q7-3.svg", "aBox":["./img_2/Q7-3-a.svg", "./img_2/Q7-3-b.svg", "./img_2/Q7-3-c.svg", "./img_2/Q7-3-d.svg", "./img_2/Q7-3-e.svg"]},
+                    {"qBox":"./img_2/Q7-4.svg", "aBox":["./img_2/Q7-4-a.svg", "./img_2/Q7-4-b.svg", "./img_2/Q7-4-c.svg", "./img_2/Q7-4-d.svg", "./img_2/Q7-4-e.svg"]}
+                ]
+            }
+        },{
+            "title":"題組3",
+            "q1":{
+                "sound":"./mp3_2/MCI_screen_E1_Q3.mp3",
+                "answer" : [ "松樹", "頭皮", "南瓜", "西瓜", "頭髮", "木瓜", "火箭", "汽車", "榕樹", "橘色", "黃色", "紅色", "機車", "火車", "大樹", "青色" ]
+            },
+            "q2":{
+                "sound":"./mp3_2/Normal_screen_B1_b3.m4a",
+                "answer":[3,8,5,4,6]
+            },
+            "q3":{
+                "before":"./img_2/Q3-3-A.jpg",
+                "after":"./img_2/Q3-3-B.jpg",
+                "pos":[
+					{"left":63, "top":26, "radius":18, "txt":"鳥變貓頭鷹"},
+					{"left":29, "top":50, "radius":16, "txt":"小橋不見了"},
+					{"left":71, "top":71, "radius":22, "txt":"前方樹叢不一樣"},
+					{"left":30, "top":30, "radius":15, "txt":"後方樹木變少了"},
+					{"left":53, "top":-3, "radius":18, "txt":"樹上出現蘋果"},
+					{"left":3,  "top":79, "radius":18, "txt":"左前方花朵變樹叢"},
+					{"left":-3, "top":31, "radius":18, "txt":"左後方小路不見了"},
+					{"left":26, "top":15, "radius":15, "txt":"蝴蝶方向不一樣"},
+					{"left":7,  "top":-6, "radius":18, "txt":"出現太陽"},
+					{"left":85, "top":32, "radius":18, "txt":"右後方樹叢不見了"}
+                ]
+            },
+            "q4":{
+                "quest":[
+					{"txt":"紅", "color":"#1557CC" },
+                    {"txt":"綠", "color":"#C6172B" },
+					{"txt":"橙", "color":"#9225E8" },
+					{"txt":"藍", "color":"#FF8710" },
+                    {"txt":"黃", "color":"#51B239" }
+                ],
+                "ans":[
+					{"txt":"紅", "val":"紅色"},
+					{"txt":"黃", "val":"黃色"},
+					{"txt":"綠", "val":"綠色"},
+					{"txt":"藍", "val":"藍色"},
+					{"txt":"紫", "val":"紫色"},
+					{"txt":"橙", "val":"橙色"}
+                ]
+            },
+            "q5":{
+                "quest":[
+                    {"type":"2x2", "left":"./img_2/Q5-3-1-L.svg", "right":"./img_2/Q5-3-1-R.svg"},
+                    {"type":"3x3", "left":"./img_2/Q5-3-2-L.svg", "right":"./img_2/Q5-3-2-R.svg"},
+                    {"type":"4x3", "left":"./img_2/Q5-3-3-L.svg", "right":"./img_2/Q5-3-3-R.svg"}
+                ]
+            },
+            "q6":{
+                "quest":[
+                    {"num":4, "sound":"./mp3_2/Normal_screen_C2_a3.m4a", "mesg":""}
+                ]
+            },            
+            "q7":{
+                "quest":[
+                    {"qBox":"./img_2/Q7-5.svg", "aBox":["./img_2/Q7-5-a.svg", "./img_2/Q7-5-b.svg", "./img_2/Q7-5-c.svg", "./img_2/Q7-5-d.svg", "./img_2/Q7-5-e.svg"]},
+                    {"qBox":"./img_2/Q7-6.svg", "aBox":["./img_2/Q7-6-a.svg", "./img_2/Q7-6-b.svg", "./img_2/Q7-6-c.svg", "./img_2/Q7-6-d.svg", "./img_2/Q7-6-e.svg"]}
                 ]
             }
         }

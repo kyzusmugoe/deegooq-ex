@@ -232,12 +232,18 @@
             div.cBtn
                 //border: 1px solid #999
                 position: absolute
+                &.debug
+                    border:1px solid #f00
+                    border-radius: 50%
                 &.on
                     background-color: rgba(255, 0, 0, .6)
                     border-radius: 50%
         .message
             color:#fff
             text-align: center
+            @media screen and ( min-height:600px)
+                flex-direction: row
+                
 
         .BPBtn.pageBtn.secondary
             margin: 30px 0

@@ -28,14 +28,36 @@
                 div.text
                     width: 280px
                     margin-bottom: 16px
-           
+
+            &.q7-1b
+                background: url('../img/chat_q1-1b.svg') no-repeat center center               
+                height: 200px
+                transform: translateY(-20px)
+                div.text
+                    margin-top: 25px
+                    margin-left: 15px
+                    flex-direction: column
+                    @include flexBox(center, center)
+                    text-align: center
+                    width: 280px
+                    span
+                        font-size: 18px
+                        font-weight: 500
+
+                    span.notice
+                        font-size: 18px
+                        font-weight: 700
+                        color:#FF4756
+
         .q7-intro
             @include flexBox(center, center)
             flex-direction: column
             @media screen and (max-height:660px)
                     flex-direction: row
             img
-                width: 40%
+                width: 40%                
+                @media screen and (min-width:560px)
+                    width: 240px
                 margin-bottom: 10px
                 /*
                     @media screen and (max-height:660px)
@@ -43,10 +65,33 @@
         .notice
             color:#FFE7A6
             text-align: center
+            margin-bottom: 10px
         #q7QuestBox
-            width: auto
-            @media screen and ( max-height: 660px)
-                width: 100%
+            .qBox
+                width:100% 
+                max-width: 140px
+                @media screen and ( max-height: 740px)
+                    max-width: 100px
+                img
+                    width: 100%
+
+            .aBox
+                @include flexBox(center, center)
+                flex-wrap: wrap
+                padding-top: 15px
+                .q7aBox
+                    @include flexBox(center, center)
+                    flex:0 0 calc(33.33% - 20px)
+                    img
+                        border: 2px solid #EECB47
+                        border-radius: 15px
+                        margin: 3px 5px
+                        width: calc(100% - 10px)
+                    @media screen and ( max-height: 680px)
+                        flex:0 0 20%
+            /*
+                @media screen and ( max-height: 660px)
+                    width: 100%
 
         .Q7container
             position: relative
@@ -78,15 +123,8 @@
             width: fit-content
             margin: 0 auto
             
-        .aBox
-            @include flexBox(center, center)
-            flex-wrap: wrap
-            .q7aBox
-                height: 80px
-                @include flexBox(center, center)
-                flex:0 0 33.33%
-                @media screen and ( max-height: 660px)
-                    flex:0 0 20%
+       
+            
 
         .q7aIcon 
             position: relative
@@ -105,7 +143,7 @@
                     top: calc( 50% - 30px )
                     left: calc( 50% - 30px )
 
-
+        
         .q7qIcon, .q7aIcon 
             width: 50px
             height: 50px
