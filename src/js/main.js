@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const openPage = pageID =>{
         closeAll()
+        window.localStorage.setItem('deegooq_current_page', pageID.replace('#',''))//設定當前頁面
         document.querySelector(pageID).style.display = "flex"
     }
 
@@ -103,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btns.forEach(btn => {
             btn.addEventListener("click", event => {
                 const pageID = event.currentTarget.dataset.id
-                window.localStorage.setItem('deegooq_current_page', pageID)//設定當前頁面
+                //window.localStorage.setItem('deegooq_current_page', pageID)//設定當前頁面
                 openPage(`#${pageID}`)
             })
         })
@@ -199,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //#endregion
 
-    //#region 題庫列表    
+    //#region list題庫列表    
     const setList = data =>{
         const box = document.querySelector('#listBox')
         data.list.map(( row, index )=>{
@@ -217,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 q7()
                 openPage('#Q1-1')
                 setDataCollector('pack', row.title)
+                window.localStorage.setItem('packNum', event.target.dataset.sn)
             })
             box.appendChild(btn)
         })
@@ -928,7 +930,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'img_2',
         ['MCI_screen_C2_Q2_a.png','MCI_screen_C2_Q2_b.png', 'MCI_screen_C2_Q3_a.png','MCI_screen_C2_Q3_b.png','Q3-1-A.jpg','Q3-1-B.jpg','Q3-2-A.jpg','Q3-2-B.jpg','Q3-3-A.jpg','Q3-3-B.jpg','Q5-1-1-L.svg','Q5-1-1-R.svg','Q5-1-2-L.svg','Q5-1-2-R.svg','Q5-1-3-L.svg','Q5-1-3-R.svg','Q5-2-1-L.svg','Q5-2-1-R.svg','Q5-2-2-L.svg','Q5-2-2-R.svg','Q5-2-3-L.svg','Q5-2-3-R.svg','Q5-3-1-L.svg','Q5-3-1-R.svg','Q5-3-2-L.svg','Q5-3-2-R.svg','Q5-3-3-L.svg','Q5-3-3-R.svg','Q7-1-a.svg','Q7-1-b.svg','Q7-1-c.svg','Q7-1-d.svg','Q7-1-e.svg','Q7-1.svg','Q7-2-a.svg','Q7-2-b.svg','Q7-2-c.svg','Q7-2-d.svg','Q7-2-e.svg','Q7-2.svg','Q7-3-a.svg','Q7-3-b.svg','Q7-3-c.svg','Q7-3-d.svg','Q7-3-e.svg','Q7-3.svg','Q7-4-a.svg','Q7-4-b.svg','Q7-4-c.svg','Q7-4-d.svg','Q7-4-e.svg','Q7-4.svg','Q7-5-a.svg','Q7-5-b.svg','Q7-5-c.svg','Q7-5-d.svg','Q7-5-e.svg','Q7-5.svg','Q7-6-a.svg','Q7-6-b.svg','Q7-6-c.svg','Q7-6-d.svg','Q7-6-e.svg','Q7-6.svg']
     )
-    
+
     setBtnsHandler()
     setButtonGroup()
 
@@ -951,7 +953,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setList(res)
         if(debbugMode){
             mainData = res.list[debbugPack]
-            console.log("現在選擇題型"+(debbugPack+1), mainData)
+            console.log("debbugMode 現在選擇題型"+(debbugPack+1), mainData)
             document.querySelector("#selectPage").style.display =' block' 
             document.querySelector("#start .BPBtn").style.display =' none' 
             q1()
@@ -961,7 +963,19 @@ document.addEventListener('DOMContentLoaded', () => {
             q5ex()
             q6()
             q7()
+        }else if(window.localStorage.getItem('packNum')){
+            console.log("localStorage 現在選擇題型"+(parseInt(window.localStorage.getItem('packNum'))+1), mainData)
+            mainData = res.list[parseInt(window.localStorage.getItem('packNum'))]
+            q1()
+            q2()
+            q3()
+            q4()
+            q5ex()
+            q6()
+            q7()
         }
+        
+        
         
     }).catch(error => {
         console.error('json 取得失敗:', error)
