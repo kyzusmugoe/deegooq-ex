@@ -1,0 +1,18 @@
+
+mixin QTypeText(ID, title)
+    div.QTypeText.page(id=ID+"-start", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=title                
+        div.row
+            div.timer
+        div.row
+            div.ansBox
+                span 鳳梨
+                span 香蕉
+        div.row.fill
+            input(type="text", placeholder="請輸入想到的水果")
+            
+        footer
+            button.skip 跳過

@@ -1,0 +1,29 @@
+
+mixin Q8
+    -let ID ="Q8" 
+    -let text = "請播放下方音檔，聽到數字「1」的時候，就點擊一次下方選單的「右邊」1的按鈕，聽到其他不是1的數字，請點擊「左邊」按鈕。"
+    div.QPlayer.page(id=ID+"-start", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=text              
+        div.row
+            img(src=img)
+            button.playMp3Btn 播放
+        div.row            
+            button A
+            button B
+        footer
+            button.button.pageBtn(data-id="Q9-start")  跳過
+    //
+        div.QPlayer.page(id=ID+"-end", style="display:none")
+            div.row
+                div.chatBox
+                    div.title=ID                
+                    div.text=title2               
+            div.row
+                div.ansBox
+                    div.ansBtn 左
+                    div.ansBtn 右
+            footer
+                button.skip 播放

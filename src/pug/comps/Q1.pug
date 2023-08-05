@@ -1,0 +1,30 @@
+mixin Q1
+    - let title = "Q1"
+    div#Q1-start.QPlayer.page(style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=title
+                div.text 請仔細聆聽下面音檔出現的五個詞並唸出來，盡可能記住他們。
+                
+        div.row.fill
+            div.playerBox
+                div.notice 注意！請勿用紙筆記錄！
+                div 調整手機音量後，點擊播放聆聽音檔
+                div.Qprogress
+                    div.bar
+                button.playMp3Btn
+        footer
+             button.pageBtn(data-id="Q2-start") 跳過
+
+    div#Q1-end.QPlayer.page(style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=title
+                div.text 請問一開始音檔中提到的五個物品是什麼？
+        div.row.fill
+            -var a = 1
+                while a <= 15
+                    div(class=("ans_"+a)) 番茄
+                    -a++
+        footer
+            button.pageBtn(data-id="Qtab1-start") 跳過

@@ -1,0 +1,35 @@
+
+mixin QTakeABreak(ID, next)
+    div.QTakeABreak.page(id=ID+"-start", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=""                
+                div.text 休息一下嗎?                
+        div.row.fill
+            button.pageBtn(data-id=ID+"-end") 是，我休息一下
+            button.pageBtn(data-id=next)  否，我要繼續作答
+            
+    div.QTakeABreak.page(id=ID+"-save", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=""         
+                div.text 
+                    |繼續測驗？
+                    br 
+                    |我們將從您上回尚未完成的地方開始                
+        div.row.fill
+            button.pageBtn(data-id=next) 開始
+
+    div.QTakeABreak.page(id=ID+"-end", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=""                
+                div.text 
+                    button
+                    |要離開測驗嗎？
+                    br
+                    |下次將從您尚未完成的地方開始
+
+        div.row.fill
+            button.quit 是，我要離開
+            button.pageBtn(data-id=next) 否，我要繼續作答

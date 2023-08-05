@@ -1,0 +1,25 @@
+
+mixin Q5
+    -let title="Q5"
+    -let text = "請輸入下方圖片的「中文名稱」，請在40秒內作答完畢"
+    div.page(id="Q5-start", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=title                
+                div.text=text               
+        div.row.fill
+            img(src=imgPath+"Q5-1.png")
+        footer
+            button.pageBtn(data-id="Q5-end") 跳過
+            
+    div.page(id="Q5-end", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=title                
+                div.text=text
+        div.row.fill
+            input(placeholder="?")
+            button.send 送出
+                
+        footer
+            button.pageBtn(data-id="Q1-end") 跳過

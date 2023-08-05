@@ -1,0 +1,38 @@
+
+mixin QPicCompare(ID, title1, title2)
+    div.page(id=ID+"-start", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=title1                
+        div.row
+            span 圖片
+        footer
+            button.pageBtn(data-id=ID+"-ready") 跳過
+            
+    div.page(id=ID+"-ready", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=title2               
+        div.row
+            img(src="./img/Q9-1.png")
+        footer
+            button.pageBtn(data-id=ID+"-end") 跳過
+
+    div.page(id=ID+"-end", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=title2
+        div.row
+            div#Q3beforeTimer.Qtimer.t1
+                span.value 30
+            span.notice1 請仔細觀察圖片中有哪些東西
+        div.row
+            div.dotBox
+        div.row
+            div.expansionBox.fullBox
+                img.Q3before
+        footer
+            button.skip 跳過

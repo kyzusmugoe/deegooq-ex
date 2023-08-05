@@ -1,0 +1,27 @@
+
+mixin Q2
+    - let title = "Q2"
+    div.page.QShapeSeperate(id="Q2-start" ,style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=title
+                div.text 請找出左上圖形分解後相同的圖，請看下面範例喔！             
+        div.row
+            span.label 範例
+            span 分解後的圖形是哪一個？
+        div.row.fill.center
+            img(src=imgPath+"Q2_1.svg")
+        footer
+            button.pageBtn(data-id="Q2-end") 跳過
+
+    div.page.QShapeSeperate(id="Q2-end", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=title
+                div.text 請選出選單中左上圖分解後的圖形是哪一個？
+        div.row
+            div.ansBox
+                img.Ans(src=imgPath+"Q2_B.png")
+
+        footer
+            button.skip(data-id="Qtab1") 跳過

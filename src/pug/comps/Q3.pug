@@ -1,0 +1,36 @@
+
+mixin Q3
+    -let title = "Q3"
+    -let text = "請仔細聽音檔 ▶ 中念的7個數字，並打出您所聽到的7個數字，例如：3402815。"
+    div.page.QPlayerNumber(id="Q3-start", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=title                 
+                div.text=text
+        div.row.fill
+            div.playerBox
+                button.playMp3Btn 播放
+                
+        footer
+            button.pageBtn(data-id="Q3-end") 跳過
+            
+    div.page.QPlayerNumber(id="Q3-end", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=title                 
+                div.text=text
+        div.row.fill
+            div.myAns
+                -var a = 1
+                    while a <= 5
+                        div(class=("ans_"+a)) ?
+                        -a++                
+        div.row
+            div.btnBox
+                -var n = 1
+                    while n <= 10
+                        button(data-num=n)= n
+                        -n++
+            
+        footer
+            button.pageBtn(data-id="Q4-start") 跳過

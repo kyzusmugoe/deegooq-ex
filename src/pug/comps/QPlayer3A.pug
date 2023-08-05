@@ -1,0 +1,60 @@
+mixin QPlayer3A(ID, title1, title2, title3, title4, title5)
+    div.QPlayer.page(id=ID+"-start", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=title1                
+        div.row.fill
+            span 123
+        footer
+            button.playMp3Btn 播放
+
+    div.QPlayer.page(id=ID+"-a1", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=title2               
+        div.row
+            input(placeholder="?")
+        footer
+            button.pageBtn(data-id=ID+"-a2") 跳過
+
+    div.QPlayer.page(id=ID+"-a2", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=title3             
+        div.row
+            input(placeholder="?")
+        footer
+            button.pageBtn(data-id=ID+"-a3") 跳過
+
+    div.QPlayer.page(id=ID+"-a3", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=title3             
+        div.row
+            input(placeholder="?")
+        footer
+            button.pageBtn(data-id=ID+"-a4") 跳過
+
+    div.QPlayer.page(id=ID+"-a4", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=title4 
+        div.row
+            input(placeholder="?")
+        footer
+            button.pageBtn(data-id=ID+"-end") 跳過
+
+    div.QPlayer.page(id=ID+"-end", style="display:none")
+        div.row
+            div.chatBox
+                div.title=ID                
+                div.text=title5               
+        div.row
+            input(placeholder="?")
+        footer
+            button.skip 跳過

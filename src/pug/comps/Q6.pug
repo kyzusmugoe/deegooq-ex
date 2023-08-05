@@ -1,0 +1,61 @@
+mixin Q6
+    - let ID = "Q6"
+    div#Q1-start.QPlayer.page(style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=ID
+                div.text 請仔細聆聽下面音檔出現的五個詞並唸出來，盡可能記住他們。
+                
+        div.row.fill
+            div.playerBox
+                div.notice 注意！請勿用紙筆記錄！
+                div 調整手機音量後，點擊播放聆聽音檔
+                div.Qprogress
+                    div.bar
+                button.playMp3Btn
+        footer
+             button.pageBtn(data-id="Q7-start") 跳過
+
+    div.QPlayer.page(id=ID+"-a1",style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=ID
+                div.text 現在請您回想剛剛提到的收件人🙎‍♂️🙍‍♀️和地址是什麼？
+        div.row.fill
+            input(type="text", placeholder="?")
+            button 送出
+        footer
+            button.pageBtn(data-id=ID+"-a2") 跳過
+
+    div.QPlayer.page(id=ID+"-a2",style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=ID
+                div.text 請問剛才提到的路名是哪一條？🤔請使用鍵盤輸入。
+        div.row.fill
+            input(type="text", placeholder="?")
+            button 送出
+        footer
+            button.pageBtn(data-id=ID+"-a3") 跳過
+
+    div.QPlayer.page(id=ID+"-a3",style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=ID
+                div.text 請問剛才提到的門牌是幾號？🙄請使用鍵盤輸入
+        div.row.fill
+            input(type="text", placeholder="?")
+            button 送出
+        footer
+            button.pageBtn(data-id=ID+"-a4") 跳過
+
+    div.QPlayer.page(id=ID+"-a4",style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=ID
+                div.text 請問剛才提到的樓層是哪一樓？😮請使用鍵盤輸入。
+        div.row.fill
+            input(type="text", placeholder="?")
+            button 送出
+        footer
+            button.pageBtn(data-id=ID+"Qtab2-start") 跳過

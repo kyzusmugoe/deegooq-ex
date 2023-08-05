@@ -1,0 +1,24 @@
+
+mixin Q7
+    -let ID = "Q7"
+    div.page(id=ID+"-start", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=ID                
+                div.text 請參考下面範例，選出「問號」所代表的圖形，共有3題，每題限時20秒               
+        div.row.fill
+            img(src=imgPath+"Q7-1.png")
+        footer
+            button.pageBtn(data-id=ID+"-end") 跳過
+            
+    div.page(id=ID+"-end", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=ID                
+                div.text 請參考下面範例，選出「問號」所代表的圖形
+        div.row.fill
+            img(src=imgPath+"Q7-2.png")
+        div.row
+            div.answerBox                
+        footer
+            button.pageBtn(data-id="Q8-start") 跳過

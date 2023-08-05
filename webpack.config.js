@@ -162,9 +162,9 @@ module.exports = (env, options) => {
                 patterns: [
                     { from: "./src/js", to: "js" },
                     { from: "./src/img", to: "img" },
-                    { from: "./src/img_2", to: "img_2" },
+                    //{ from: "./src/img_2", to: "img_2" },
                     { from: "./src/mp3", to: "mp3" },
-                    { from: "./src/mp3_2", to: "mp3_2" }
+                    //{ from: "./src/mp3_2", to: "mp3_2" }
                 ],
             }),
             

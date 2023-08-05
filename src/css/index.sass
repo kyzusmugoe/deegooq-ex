@@ -1,11 +1,11 @@
+@use "sass:math"
 
 $headerHeight: 80px
 $pagePadding: 20px
-$mainColor:#235288
-
+$mainColor:#239EE1
+$titleColor:#FFCC80
 $AppMaxWidth:820px
 $AppMaxHeight:896px
-
 $PadWidth:650px
 
 //@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap')
@@ -14,21 +14,21 @@ $PadWidth:650px
 @import './start.sass'
 @import './personal.sass'
 @import './basic.sass'
-@import './Q1.sass'
-@import './Q2.sass'
-@import './Q3.sass'
-@import './Q4.sass'
-@import './Q5.sass'
-@import './Q6.sass'
-@import './Q7.sass'
 @import './end.sass'
+
+/*
+    @import './Q1.sass'
+    @import './Q2.sass'
+    @import './Q3.sass'
+    @import './Q4.sass'
+    @import './Q5.sass'
+    @import './Q6.sass'
+    @import './Q7.sass'
 
 @mixin flexBox($row, $col)
     display: flex
     justify-content: $row
     align-items: $col
-
-
 
 body,html
     margin: 0px
@@ -43,8 +43,6 @@ body
         @include flexBox(start, center)
         flex-direction: column
 
-        button
-            color:#000
 
         @include loading()
             
@@ -88,7 +86,6 @@ body
                         background: url('../img/plant_1.png') no-repeat center center
                         z-index: -1
 
-
         #list
             .intro
                 color: #fff
@@ -103,6 +100,7 @@ body
                     border: 1px solid #EECB47
                     border-radius: 25px 
                     margin-bottom: 20px  
+        
         //元件
         #runnerBoxTool
             @include flexBox(start, center)
@@ -251,7 +249,6 @@ body
                 position: absolute
                 left: 0
                 
-
         &.full
             header
                 display: none
@@ -267,48 +264,38 @@ body
             z-index: 1
             display: flex
             flex-direction: column
+            justify-content: space-between
+            background-color: #fff
 
+            .chatBox
+                border-bottom-right-radius: 40px
+                padding:10px 25px
+                width: calc(100% - 50px)
+                //background: linear-gradient(96.16deg, #1E8FE1 16.83%, #2EC1E1 104.59%)
+                background-color: $mainColor
+                animation-name: drop 
+                animation-duration: .4s
+                @keyframes drop
+                    0% 
+                        transform: translateY(-50px)
+                    100% 
+                        transform: translateY(0)
+                .title
+                    color: $titleColor
+                    font-weight: Bolder
+                    font-size: 30px
+                    margin-bottom: 6px
+                .text
+                    font-size: 18px
+                    line-height: 28px
+                    color:#fff
+                
 
-            &.bg1
-                background:#38246c url('../img/bg_l.jpg') no-repeat 
-                background-size: 1300px
-                background-position: center -90px
-            &.bg2
-                background:#39326c url('../img/bg2_l.svg') no-repeat 
-                background-size: 1000px
-                background-position: 0 -300px
-            &.bg3
-                background:#38246c url('../img/bg3_l.svg') no-repeat 
-                background-size: 240%
-                background-position: 0 -40%
-            footer
-                z-index: -1                                
-            footer.f1::before                                
-                content: " "
-                position: absolute
-                left: 0
-                bottom: 0
-                width: 100%
-                height:50px
-                background-image: url('../img/footer_1.svg')
-                background-repeat: no-repeat
-                background-position: center bottom
-                background-size: 100%
-            footer.f1.corner::after 
-                content: " "
-                position: absolute
-                left: 0
-                bottom: 0
-                width: 60px
-                height:60px
-                background-image: url('../img/footer_corner.svg')
-                background-repeat: no-repeat
-                background-position: left center
-                background-size: 100% 
-
+           
+ 
             .row
                 width: 100%
-                max-width: 390px
+                /*max-width: 390px
                 margin: 0 auto
                 @media screen and (min-width:$PadWidth)
                     margin-bottom: 15px
@@ -326,8 +313,8 @@ body
                         width: 100%
                 
                 &.fill
-                    flex: 0.8 0
-                
+                    flex: 1 1 auto
+                    padding: 15px 0
                 //margin-bottom: 16px 
                 &.hori
                     @include flexBox(center, center)
@@ -359,17 +346,50 @@ body
                         &::-ms-input-placeholder   
                             text-align: center
 
+            footer
+                padding: 0
+                width: calc(100% + 50px)
+                margin-left: -25px
+                button
+                    font-size: 18px
+                    width: 100%
+                    color: #fff
+                    background: #239EE1
+                    border: none
+                    padding: 12px 0 32px 0 
+                    border-top-left-radius: 30px
+                    border-top-right-radius: 30px
+                    position: relative
+                    animation-name: emerge 
+                    animation-duration: .4s
+                    @keyframes emerge
+                        0% 
+                            transform: translateY(50px)
+                        100% 
+                            transform: translateY(0)
+                    &::after
+                        position: absolute
+                        content: ""
+                        width: 12px
+                        height: 12px
+                        background-image: url("../img/skip-arrow.svg")
+                        background-repeat: no-repeat
+                        background-position: center center
+                        background-size: cover
+                        top: 19px
+                        margin-left: 5px
+
             .Qprogress
                 width: 100%
                 height: 10px
                 border-radius: 8px
-                background-color: #bababa
+                background-color: #fff
                 margin: 10px
                 overflow: hidden
                 .bar
                     width: 0
                     height: 10px
-                    background-color: #EECB47
+                    background-color: $mainColor
            
             .Qtimer
                 width: 95px
@@ -392,17 +412,114 @@ body
                         position: absolute
                         right:-10px 
                         bottom: 3px
+            
+            &.QPlayer
+                div.playerBox
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    flex-direction: column
+                    background-color: #E2F5FD
+                    padding: 15px
+                    border-radius: 40px
+                    font-size: 18px
+                    line-height: 36px
+                    margin-top: 30px
+                    position: relative
+                    &::before
+                        $size:20px
+                        content: ""
+                        position: absolute
+                        top:-$size                     
+                        border-left: $size solid transparent
+                        border-right: $size solid transparent  
+                        border-bottom: $size solid #E2F5FD
+                        
+                    .notice
+                        font-size: 20px
+                        font-weight: bold
+                        color:#f00 
+                    button
+                        width: 40px
+                        height: 40px
+                        background-color: #239EE1
+                        border: none
+                        border-radius: 50%
+                        position: relative
+                        .mute
+                            pointer-events: none
+                        &::before
+                            position: absolute
+                            content: ""
+                            width: 0
+                            height: 0
+                            border-color: #fff
+                            border-top: 12px solid transparent
+                            border-bottom: 12px solid transparent
+                            border-left: 12px solid #fff
+                            top: calc(50% - 12px)
+                            left: calc(50% - 4px)
+                        &:active
+                            animation-name: jump
+                            animation-duration: .4s
+                            @keyframes jump
+                                0% 
+                                    transform: scale(1.2)
+                                100% 
+                                    transform: scale(1)
+                            
+                            
+            &.QShapeSeperate
+                .label
+                    color: $mainColor
+                    border: 1px solid $mainColor
+                    padding:10px 
+                img
+                    width: 90%           
+                    
             //riderMap
 
-        
+        .page.QShapeSeperate-B            
+            $gap:2.5%
+            .ansBox
+                height: 100%
+                position: relative
+                img
+                    width: 100%
+                button
+                    position: absolute
+                    top:2%
+                    left: 2%
+                    width: 30%
+                    height: 40%
+                    background: none
+                    border: none
+                    transition: border .4s
+                    &.active
+                        border: 5px solid #ff0
+
+                @for $i from 0 through 20 
+                    button.pos-#{$i}
+                        top: 11.5% + (math.floor($i/3) * 40%) + (math.floor($i/3) * $gap)
+                        left: 2.5% + (math.floor($i%3) * 30%) + (math.floor($i%3) * $gap) 
+                        
+                    /*
+                        ul:nth-child(3n + #{$i})
+                            background-color: lighten($base-color, $i * 5%)
+
+
+
         @include start()
         @include personal()
         @include basic()
-        @include Q1()
-        @include Q2()
-        @include Q3()
-        @include Q4() 
-        @include Q5() 
-        @include Q6() 
-        @include Q7() 
+
+        /*
+            @include Q1()
+            @include Q2()
+            @include Q3()
+            @include Q4() 
+            @include Q5() 
+            @include Q6() 
+            @include Q7() 
+        
         @include end() 

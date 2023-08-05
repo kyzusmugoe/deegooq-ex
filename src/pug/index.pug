@@ -1,9 +1,25 @@
+include ./comps/Q1.pug
+include ./comps/Q2.pug
+include ./comps/Q3.pug
+include ./comps/Q4.pug
+include ./comps/Q5.pug
+include ./comps/Q6.pug
+include ./comps/Q7.pug
+include ./comps/Q8.pug
+
+include ./comps/QPlayer3A.pug
+include ./comps/QTakeABreak.pug
+include ./comps/QPicCompare.pug
+include ./comps/QTypeText.pug
+-imgPath="./img/"
+
 doctype html
 html
     include ./comps/header.pug
     body 
         include ./comps/landscape.pug
         div.app.portrait(style="display:none")
+            
             //首頁
             include ./comps/start.pug
             //個人資料同意書
@@ -12,32 +28,72 @@ html
             include ./comps/basic.pug
             //選單
             include ./comps/list.pug
-            //Q1 第一題
-            include ./comps/q1-1.pug
-            include ./comps/q1-2.pug
-            include ./comps/q1-3.pug
-            //Q2
-            include ./comps/q2-2.pug
-            include ./comps/q2-1.pug
+
+            +Q1
+            +Q2            
+            +Q3
+            +Q4
+            +Q5
+            +QTakeABreak("Qtab1", "Q6-start")
+
+            +Q6
+            +Q7
+            +Q8
+            +QTakeABreak("Qtab2", "Q11-start")
+            
+            +QPlayer3A(
+                "Q6",
+                "請仔細聆聽下面音檔出現的收件人和地址，並請唸出來，盡可能記住它們。",
+                "現在請您回想剛剛提到的收件人🙎‍♂️🙍‍♀️和地址是什麼？",
+                "請問剛才提到的路名是哪一條？🤔請使用鍵盤輸入。",
+                "請問剛才提到的門牌是幾號？🙄請使用鍵盤輸入。",
+                "請問剛才提到的樓層是哪一樓？😮請使用鍵盤輸入。"
+            )
+            
+            //
+                +QPlayerAB(
+                    "Q8",
+                    "",
+                    imgPath+"Q8-1.png"              
+                )
+
+            +QPicCompare(
+                "Q9",
+                "請您注意看下面出現的圖片30秒，之後會再請您指出與另一張圖不同的地方",
+                "請點擊「圖片」上，與上一張照片不同之處（至少找出5個）"
+            )
+            
+            +QTypeText(
+                "Q10",
+                "請打出所有想到的「水果」中文名稱。注意！，一個對話框一個答案。您有一分鐘的時間作答，請開啟鍵盤輸入答案！"
+            )
+            
+            
+            +QTakeABreak(
+                "tab2"
+            )
+
+
             //Q3
-            include ./comps/q3-1.pug
-            include ./comps/q3-2.pug
-            include ./comps/q3-3.pug
-            include ./comps/q3-4.pug
+                include ./comps/q3-1.pug
+                include ./comps/q3-2.pug
+                include ./comps/q3-3.pug
+                include ./comps/q3-4.pug
             //Q4
-            include ./comps/q4-1.pug
-            include ./comps/q4-2.pug
+            
+                include ./comps/q4-1.pug
+                include ./comps/q4-2.pug
             //Q5 比對圖
-            include ./comps/q5ex-1.pug
-            include ./comps/q5ex-2.pug
+                include ./comps/q5ex-1.pug
+                include ./comps/q5ex-2.pug
             //Q6 記憶遊戲
-            include ./comps/q6-1.pug
-            include ./comps/q6-2.pug
-            include ./comps/q6-3.pug
+                include ./comps/q6-1.pug
+                include ./comps/q6-2.pug
+                include ./comps/q6-3.pug
             //Q7 邏輯遊戲
-            include ./comps/q7-1.pug
-            include ./comps/q7-2.pug
-            include ./comps/q7-3.pug
+                include ./comps/q7-1.pug
+                include ./comps/q7-2.pug
+                include ./comps/q7-3.pug
             //結束
             include ./comps/end.pug
         include ./comps/loading.pug

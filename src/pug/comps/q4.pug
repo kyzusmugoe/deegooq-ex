@@ -1,0 +1,26 @@
+mixin Q4
+    - let title = "Q4"
+    - let text = "請按照一個數字到另一個文字順序點擊，從點擊1開始、之後點甲，然後接著點2…繼續點擊到庚結束，中間若有錯誤請接續作答，不要重複作答喔！"
+    div.page(id="Q4-start", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=title               
+                div.text=text 
+                
+        div.row.fill
+            img(src=imgPath+"Q4-1.png")
+        footer
+            button.pageBtn(data-id="Q4-end") 下一頁
+            
+    div.page(id="Q4-end", style="display:none")
+        div.row.full
+            div.chatBox
+                div.title=title             
+                div.text=text
+        div.row.fill
+            div.ballBox
+                each val in [1, 2, 3, 4, 5,"甲","乙","丙","丁","戊"]
+                    div.ball(data-val=val)= val
+                
+        footer
+            button.pageBtn(data-id="Q5-start") 跳過
