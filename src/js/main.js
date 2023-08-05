@@ -1,3 +1,5 @@
+//ver 2023080501
+
 const surveycakeURL = 'https://www.surveycake.com/'
 const sendDataURL = 'https://www.TEST.com/POST/API'
 const debbugMode = 1 //1開啟, 0關閉debug
